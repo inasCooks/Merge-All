@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="scene" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B2C2CF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="callfolder" fitHeight="150.0" fitWidth="200.0" layoutX="195.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/callfile.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="moneyfolder" fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/moneyfile.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="callfile4" fitHeight="130.0" fitWidth="76.0" layoutX="582.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/calldoc.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="callfile3" fitHeight="130.0" fitWidth="76.0" layoutX="544.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/calldoc.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="moneyfile4" fitHeight="150.0" fitWidth="76.0" layoutX="506.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/moneydoc.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="callfile2" fitHeight="130.0" fitWidth="76.0" layoutX="468.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/calldoc.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="moneyfile3" fitHeight="150.0" fitWidth="76.0" layoutX="430.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/moneydoc.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="moneyfile2" fitHeight="150.0" fitWidth="76.0" layoutX="392.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/moneydoc.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="completeMsg" prefHeight="54.0" prefWidth="713.0" style="-fx-background-color: #303030;" text=" Ive sorted all the documents, it seems like that unclocked the door" textFill="WHITE" visible="false">
+         <font>
+            <Font name="OCR A Extended" size="17.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="callfile1" fitHeight="130.0" fitWidth="76.0" layoutX="354.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/calldoc.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="moneyfile1" fitHeight="150.0" fitWidth="76.0" layoutX="307.0" layoutY="98.0" onDragDone="#handleDragDone" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/moneydoc.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
