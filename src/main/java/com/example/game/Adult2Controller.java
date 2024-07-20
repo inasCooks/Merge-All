@@ -29,11 +29,13 @@ public class Adult2Controller implements Initializable {
 
     private boolean done;
 
-    Dragdrop draggable = new Dragdrop();
+    Dragdrop draggable;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        draggable = new Dragdrop();
+
         draggable.initializeFolder(callfile1, callfolder);
         draggable.initializeFolder(callfile2, callfolder);
         draggable.initializeFolder(callfile3, callfolder);
@@ -48,7 +50,6 @@ public class Adult2Controller implements Initializable {
     }
 
     public boolean hasCompleted(){
-        done = draggable.isCurCompleted();
-        return done;
+        return Dragdrop.hasCompleted; 
     }
 }

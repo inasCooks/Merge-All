@@ -78,7 +78,7 @@ public class AdultController implements Initializable {
         this.adult1Controller = adult1Controller;
         this.adult2Controller = adult2Controller;
         this.adult3Controller = adult3Controller;
-        System.out.println("adulut1controller in adult controller ..." + adult1Controller );
+        System.out.println("controllers 1,2,3 ..." + adult1Controller + " " + adult2Controller + " " + adult3Controller);
     }
 
     @FXML
@@ -121,9 +121,10 @@ public class AdultController implements Initializable {
     // nextStage gets triggered upon entering the door to respawn sprite & update appearance
     public void nextStage(){
         System.out.println("popup closed detected: " +done1 + " " + done2 + " " + done3);
-        //to respawn
+        
         if (done1 && done2 && done3){
             System.out.print("should have exited the adult level"); //no need to respawn after done all popups
+            chickenPlayer.setVisible(false);
             //ask scene manager to switch to grandpa level.
         }else{
             changeSpritePos(chickenPlayer, spawnPosX, spawnPosY); //respawn
@@ -158,6 +159,7 @@ public class AdultController implements Initializable {
                 doorLocked(false); //unlock the door
             }
         } else if (done1 && !done2 && !done3){
+            System.out.println("checking win status upon closing popup 2");
             if(adult2Controller.hasCompleted()){
                 System.out.println("stage 2 is completed");
                 done2 = true;

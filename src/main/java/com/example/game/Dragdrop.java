@@ -28,6 +28,8 @@ public class Dragdrop {
     private final double ALBUM_WIDTH = 100;
     private final double ALBUM_HEIGHT = 100;
 
+    public static boolean hasCompleted = false;
+
     //for senior
     @FXML
     public void initializeAlbum(ImageView pic, ImageView album) {
@@ -119,6 +121,8 @@ public class Dragdrop {
                     success = true;
                     if (isCurCompleted()) {
                         showCompletionMessage();
+                        hasCompleted();
+                        System.out.println("msg: " + msg);
                     }
                 }
             }
@@ -150,8 +154,13 @@ public class Dragdrop {
         return true;
     }
 
+    public boolean hasCompleted(){
+        return hasCompleted;
+    }
+
     private void showCompletionMessage() {
         // Display a "Congratulations" message on the current window
         msg.setVisible(true);
+        hasCompleted=true;
     }
 }

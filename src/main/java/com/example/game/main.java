@@ -17,11 +17,11 @@ public class main extends Application {
         primaryStage.setTitle("The Chicken Game");
         primaryStage.show();
         
-        adult1Controller = new Adult1Controller();
-        adult2Controller = new Adult2Controller();
-        adult3Controller = new Adult3Controller();
-        
-        sceneManager = new SceneManager(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
+        // adult1Controller = new Adult1Controller();
+        // adult2Controller = new Adult2Controller();
+        // adult3Controller = new Adult3Controller();
+        sceneManager = new SceneManager(primaryStage);
+        // sceneManager = new SceneManager(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
         sceneManager.switchToAdultLevel();
 
     }

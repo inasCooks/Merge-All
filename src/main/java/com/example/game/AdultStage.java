@@ -20,18 +20,20 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
 
     // @FXML
     // private AnchorPane rootAnchorPane;
-
-    public AdultStage(Stage primaryStage, AdultController adultController, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller) throws IOException{
+    public AdultStage(Stage primaryStage) throws IOException{
+    // public AdultStage(Stage primaryStage, AdultController adultController, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller) throws IOException{
         super(new AnchorPane());
+        adult1Controller = new Adult1Controller();
+        adult2Controller = new Adult2Controller();
+        adult3Controller = new Adult3Controller();
         this.primaryStage = primaryStage;
-        this.adultController=adultController;
-        this.adult1Controller = adult1Controller;
-        this.adult2Controller = adult2Controller;
-        this.adult3Controller = adult3Controller;
+        // this.adultController=adultController;
+        // this.adult1Controller = adult1Controller;
+        // this.adult2Controller = adult2Controller;
+        // this.adult3Controller = adult3Controller;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("adult-mainStage.fxml"));
         try{
-            // this.adultController= new AdultController(this, this.adult1Controller, this.adult2Controller);
-            this.adultController= new AdultController(this, adult1Controller,adult2Controller, adult3Controller);
+            this.adultController= new AdultController(this, this.adult1Controller, this.adult2Controller, this.adult3Controller);
             loader.setController(this.adultController);
             Parent root = loader.load();
             adultStage = primaryStage;
@@ -74,6 +76,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
                 });
             }
             dustStage.show();
+            System.out.println("adult1cont from adultstage: " + adult1Controller);
 
         }catch (IOException e){
             e.printStackTrace();
@@ -86,7 +89,6 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
         System.out.println("poppin up doc sort stage");
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("adult2-popup.fxml"));
         try{
-            this.adult2Controller= new Adult2Controller();
             loader2.setController(adult2Controller);
             Parent sortDocRoot = loader2.load();
             sortDocScene = new Scene(sortDocRoot); 
@@ -102,6 +104,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
                 });
             }
             sortDocStage.show();
+            System.out.println("adult2cont from adultstage: " + adult2Controller);
 
         }catch (IOException e){
             e.printStackTrace();
@@ -114,7 +117,6 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
         System.out.println("poppin up THIRD POPUP stage");
         FXMLLoader loader3 = new FXMLLoader(getClass().getResource("adult3-popup.fxml"));
         try{
-            // this.adult3Controller= new Adult3Controller();
             loader3.setController(adult3Controller);
             Parent officeRoot = loader3.load();
             officeTableScene = new Scene(officeRoot); 
@@ -131,6 +133,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
                 });
             }
             officeTableStage.show();
+            System.out.println("adult3cont from adultstage: " + adult3Controller);
 
         }catch (IOException e){
             e.printStackTrace();
