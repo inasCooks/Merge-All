@@ -53,22 +53,28 @@ public class Adult3Controller implements Initializable {
         drag1.makeDraggable(meeting);
 
         startCheckingCompletion();
+        System.out.println("completeLabel: " + this.completeLabel);
     }
     private void startCheckingCompletion() {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                hasCompleted();
+                stageCompleted();
             }
         }.start();
     }
 
-    public boolean hasCompleted() {
+    private void stageCompleted() {
         if (drag1.isSnap && drag2.isSnap && drag3.isSnap && drag4.isSnap) {
             completeLabel.setVisible(true);
-            return true;
-        } else {
+        } 
+    }
+
+    public boolean hasCompleted(){
+        System.out.println("completeLabel: " + this.completeLabel);
+        if (completeLabel!=null)
+            return completeLabel.isVisible();
+        else
             return false;
-        }
     }
 }

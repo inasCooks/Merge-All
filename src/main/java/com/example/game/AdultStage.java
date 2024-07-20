@@ -31,7 +31,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("adult-mainStage.fxml"));
         try{
             // this.adultController= new AdultController(this, this.adult1Controller, this.adult2Controller);
-            this.adultController= new AdultController(this,adult1Controller,this.adult2Controller, this.adult3Controller);
+            this.adultController= new AdultController(this, adult1Controller,adult2Controller, adult3Controller);
             loader.setController(this.adultController);
             Parent root = loader.load();
             adultStage = primaryStage;
@@ -87,7 +87,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("adult2-popup.fxml"));
         try{
             this.adult2Controller= new Adult2Controller();
-            loader2.setController(this.adult2Controller);
+            loader2.setController(adult2Controller);
             Parent sortDocRoot = loader2.load();
             sortDocScene = new Scene(sortDocRoot); 
             
@@ -114,8 +114,8 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
         System.out.println("poppin up THIRD POPUP stage");
         FXMLLoader loader3 = new FXMLLoader(getClass().getResource("adult3-popup.fxml"));
         try{
-            this.adult2Controller= new Adult2Controller();
-            loader3.setController(this.adult2Controller);
+            // this.adult3Controller= new Adult3Controller();
+            loader3.setController(adult3Controller);
             Parent officeRoot = loader3.load();
             officeTableScene = new Scene(officeRoot); 
             
@@ -126,6 +126,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
                 officeTableStage.setScene(officeTableScene);
             } else {
                 officeTableStage.setOnHiding(e -> {
+                    System.out.println("popup 3 is closed");
                     this.adultController.checkWinStatus();
                 });
             }
@@ -133,7 +134,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
 
         }catch (IOException e){
             e.printStackTrace();
-            System.out.println("somethin wrong with popup 2 loaaaader");
+            System.out.println("somethin wrong with popup 3 loaaaader");
         }  
     }
 }

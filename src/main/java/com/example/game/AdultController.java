@@ -122,22 +122,26 @@ public class AdultController implements Initializable {
     public void nextStage(){
         System.out.println("popup closed detected: " +done1 + " " + done2 + " " + done3);
         //to respawn
-        changeSpritePos(chickenPlayer, spawnPosX, spawnPosY);
-        doorLocked(true); //lock the door again
-
-        if (done1 && !done2 && !done3){
-            System.out.println("set up for next stage");
-            changeSpritePos(warningIcon, iconPosX_1, iconPosY_1);
-            System.out.println("Position: "+warningIcon.getLayoutX()+" "+warningIcon.getLayoutY());
-            warningIcon.setVisible(true);
-            docSection.setVisible(true);
-        } else if (done1 && done2 && !done3){
-            changeSpritePos(warningIcon, iconPosX_2, iconPosY_2);
-            warningIcon.setVisible(true);
-            officeTable.setVisible(true);
-        } else if (done1 && done2 && done3){
-            //can exit adult level
+        if (done1 && done2 && done3){
+            System.out.print("should have exited the adult level"); //no need to respawn after done all popups
+            //ask scene manager to switch to grandpa level.
+        }else{
+            changeSpritePos(chickenPlayer, spawnPosX, spawnPosY); //respawn
+            doorLocked(true); //lock the door again
+    
+            if (done1 && !done2 && !done3){
+                System.out.println("set up for next stage");
+                changeSpritePos(warningIcon, iconPosX_1, iconPosY_1);
+                System.out.println("Position: "+warningIcon.getLayoutX()+" "+warningIcon.getLayoutY());
+                warningIcon.setVisible(true);
+                docSection.setVisible(true);
+            } else if (done1 && done2 && !done3){
+                changeSpritePos(warningIcon, iconPosX_2, iconPosY_2);
+                warningIcon.setVisible(true);
+                officeTable.setVisible(true);
+            }
         }
+        
     }
 
     
@@ -145,26 +149,27 @@ public class AdultController implements Initializable {
     //gets triggered everytime popup window is closed.
     public void checkWinStatus() {
         System.out.println("popup closed detected: " +done1 + " " + done2 + " " + done3);
-        System.out.println("winStatus: " +adult1Controller.hasCompleted() + " " + adult2Controller.hasCompleted());
+        System.out.println("winStatus: " +adult1Controller.hasCompleted() + " " + adult2Controller.hasCompleted()+ " " + adult3Controller.hasCompleted());
         if (!done1){
             if(adult1Controller.hasCompleted()){
                 System.out.println("stage 1 is completed");
                 done1 = true;
                 warningIcon.setVisible(false); //hide button cz game has been completed
-                doorLocked(false);
+                doorLocked(false); //unlock the door
             }
         } else if (done1 && !done2 && !done3){
             if(adult2Controller.hasCompleted()){
                 System.out.println("stage 2 is completed");
                 done2 = true;
-                warningIcon.setVisible(false); //hide button cz game has been completed
+                warningIcon.setVisible(false);
                 doorLocked(false);
             }
         } else if (done1 && done2 && !done3){
+            System.out.println("checking win status upon closing popup 3");
             if(adult3Controller.hasCompleted()){
-                System.out.println("stage 2 is completed");
-                done2 = true;
-                warningIcon.setVisible(false); //hide button cz game has been completed
+                System.out.println("stage 3 is completed");
+                done3 = true;
+                warningIcon.setVisible(false); 
                 doorLocked(false);
             }
         }

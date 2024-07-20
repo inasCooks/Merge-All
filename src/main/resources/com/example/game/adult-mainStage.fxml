@@ -23,6 +23,11 @@
       <Rectangle fx:id="rightB" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="803.0" layoutX="1166.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="371.0" />
       <Rectangle fx:id="leftB" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="802.0" layoutX="-4.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="365.0" />
       <Rectangle fx:id="topB" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="217.0" layoutX="355.0" stroke="TRANSPARENT" strokeType="INSIDE" width="814.0" />
+      <ImageView fx:id="chickenPlayer" fitHeight="77.0" fitWidth="83.0" layoutX="723.0" layoutY="712.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/ChickenPlayer.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="officeTable" fitHeight="186.0" fitWidth="331.0" layoutX="867.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../sprite/officeTable_sprite.png" />
@@ -33,12 +38,7 @@
             <Image url="@../../../sprite/documentSection_sprite.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="chickenPlayer" fitHeight="77.0" fitWidth="83.0" layoutX="722.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../sprite/ChickenPlayer.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="openedDoor" fitHeight="163.0" fitWidth="86.0" layoutX="720.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="openedDoor" fitHeight="163.0" fitWidth="86.0" layoutX="720.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../sprite/OpenedDoor.png" />
          </image>
