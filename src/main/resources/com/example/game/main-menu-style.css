@@ -1,0 +1,54 @@
+
+#startButton {
+    -fx-background-image: url('../../../sprite/mainMenu_child/start.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 10;
+    -fx-pref-width: 225;
+    -fx-pref-height: 50;
+}
+
+#continueButton {
+    -fx-background-image: url('../../../sprite/mainMenu_child/continue.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 10;
+    -fx-pref-width: 225;
+    -fx-pref-height: 50;
+}
+
+#exitButton {
+    -fx-background-image: url('../../../sprite/mainMenu_child/exit.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 10;
+    -fx-pref-width: 225;
+    -fx-pref-height: 50;
+}
+
+#pauseButton {
+    -fx-background-image: url('../../../sprite/mainMenu_child/pause.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 10;
+    -fx-pref-width: 50;
+    -fx-pref-height: 50;
+}
+
+#resumeButton {
+    -fx-background-image: url('../../../sprite/mainMenu_child/resume.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+#saveButton {
+    -fx-background-image: url('../../../sprite/mainMenu_child/save.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+#returnButton {
+    -fx-background-image: url('../../../sprite/mainMenu_child/return.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}

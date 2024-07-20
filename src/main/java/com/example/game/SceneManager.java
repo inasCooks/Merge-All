@@ -14,13 +14,11 @@ public class SceneManager {
     private Adult3Controller adult3Controller;
 
     public SceneManager(Stage primaryStage) {
-    // public SceneManager(Stage primaryStage, AdultController adultController, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller) {
         this.primaryStage = primaryStage;
-        // this.adultController=adultController;
-        // this.adult1Controller = adult1Controller;
-        // this.adult2Controller = adult2Controller;
-        // this.adult3Controller = adult3Controller;
-        // this.miniStageOpener= miniStageOpener;
+    }
+
+    public void switchToChildStage() throws IOException{
+        
     }
 
     public void switchToAdultLevel() throws IOException{

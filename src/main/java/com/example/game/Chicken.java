@@ -1,5 +1,6 @@
 package com.example.game;
 
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.beans.binding.BooleanBinding;
@@ -36,10 +37,17 @@ public class Chicken {
     private int movementVariable = 2;
     private ImageView sprite;
     private AnchorPane sceneAnchorPane;
+    private String playerName;
+    private boolean isPaused = false;
+
 
     public Chicken(ImageView chickenImageView, AnchorPane sceneAnchorPane){
         this.sprite = chickenImageView;
         this.sceneAnchorPane = sceneAnchorPane;
+    }
+
+    public String getPlayerName(){
+        return playerName;
     }
 
     public void makeMovable(){
@@ -62,7 +70,7 @@ public class Chicken {
             System.out.println("makeMovable finished");
     }
 
-    private void movementSetup() {
+    protected void movementSetup() {
         sceneAnchorPane.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.W) {
                 wPressed.set(true);
@@ -103,6 +111,8 @@ public class Chicken {
     AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long timestamp) {
+            if (isPaused) return;
+
             if(wPressed.get()) {
                 sprite.setLayoutY(sprite.getLayoutY() - movementVariable);
             }
@@ -120,4 +130,16 @@ public class Chicken {
             }
         }
     };
+
+    public void pauseMovement() {
+        isPaused = true;
+        timer.stop();
+        System.out.println("Movement paused.");
+    }
+
+    public void resumeMovement() {
+        isPaused = false;
+        timer.start();
+        System.out.println("Movement paused.");
+    }
 }
