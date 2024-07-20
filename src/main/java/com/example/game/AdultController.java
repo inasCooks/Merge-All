@@ -41,9 +41,14 @@ public class AdultController implements Initializable {
 
     @FXML
     private Label dialogLabel;
+    private int curDialog=0;
     private String[] dialogList = {
             "You: *Cough cough* It’s so dusty here",
-            "Chicken NPC: Can you help clean it?"
+            "Chicken NPC: Can you help clean it?", 
+            "You: Ugh, why am I here again?", //first respawn
+            "You: Wait, that space wasn't there before..",
+            "You: Again...? ", //second respawn
+            "You: Oh wait, this whole office looks suspiciously familiar to me though..."
     };
     
     private boolean done1 = false; //done 1 means completed & won popup stage 1
@@ -64,7 +69,7 @@ public class AdultController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        dialogLabel.setVisible(true);
         chicken = new Chicken(chickenPlayer,scene);
         spawnPosX = chickenPlayer.getLayoutX();
         spawnPosY = chickenPlayer.getLayoutY();
@@ -82,16 +87,33 @@ public class AdultController implements Initializable {
     }
 
     @FXML
-    void clickIcon(){
-        if (!done1)
-            miniStageOpener.openAdult1Stage();
-        else if (done1 && !done2 && !done3){
-            miniStageOpener.openAdult2Stage();
-            System.out.println("shd have opened sec popup");
+    void clickAnywhere(){
+        if (dialogLabel.isVisible()){
+            nextDialog();
+        }
+    }
+
+    private void nextDialog(){
+        if (curDialog == 1 || curDialog == 3 || curDialog == 5){
+            dialogLabel.setVisible(false);
         } 
-        else if (done1 && done2 && !done3)
-            miniStageOpener.openAdult3Stage();
-        }   
+        curDialog++;
+        dialogLabel.setText(dialogList[curDialog]);
+    }
+
+    @FXML
+    void clickIcon(){
+        if (!dialogLabel.isVisible()){ //let player click icon only when dialog has been covered
+            if (!done1)
+                miniStageOpener.openAdult1Stage();
+            else if (done1 && !done2 && !done3){
+                miniStageOpener.openAdult2Stage();
+                System.out.println("shd have opened sec popup");
+            } 
+            else if (done1 && done2 && !done3)
+                miniStageOpener.openAdult3Stage();
+            }  
+        }
 
     public void checkCollision(ImageView chickenPlayer, Rectangle top, Rectangle bottom, Rectangle right, Rectangle left){
         if (chickenPlayer.getBoundsInParent().intersects(top.getBoundsInParent())) {
@@ -125,10 +147,12 @@ public class AdultController implements Initializable {
         if (done1 && done2 && done3){
             System.out.print("should have exited the adult level"); //no need to respawn after done all popups
             chickenPlayer.setVisible(false);
+            // curDialog++;
             //ask scene manager to switch to grandpa level.
         }else{
             changeSpritePos(chickenPlayer, spawnPosX, spawnPosY); //respawn
             doorLocked(true); //lock the door again
+            dialogLabel.setVisible(true);
     
             if (done1 && !done2 && !done3){
                 System.out.println("set up for next stage");

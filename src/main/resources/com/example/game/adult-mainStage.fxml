@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1535.0" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1535.0" onMouseClicked="#clickAnywhere" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="bgImage" fitHeight="802.0" fitWidth="1493.0" layoutX="51.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -23,7 +23,7 @@
       <Rectangle fx:id="rightB" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="803.0" layoutX="1166.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="371.0" />
       <Rectangle fx:id="leftB" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="802.0" layoutX="-4.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="365.0" />
       <Rectangle fx:id="topB" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="217.0" layoutX="355.0" stroke="TRANSPARENT" strokeType="INSIDE" width="814.0" />
-      <ImageView fx:id="chickenPlayer" fitHeight="77.0" fitWidth="83.0" layoutX="723.0" layoutY="712.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="chickenPlayer" fitHeight="77.0" fitWidth="83.0" layoutX="723.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../sprite/ChickenPlayer.png" />
          </image>
@@ -48,7 +48,7 @@
             <Image url="@../../../sprite/warning_sprite.png" />
          </image>
       </ImageView>
-      <Label fx:id="dialogLabel" alignment="CENTER" layoutX="-20.0" layoutY="701.0" prefHeight="88.0" prefWidth="1563.0" style="-fx-background-color: #303030;" text="You: Hmm it looks so dusty there" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-20.0" AnchorPane.rightAnchor="-8.0">
+      <Label fx:id="dialogLabel" alignment="CENTER" layoutY="747.8000000000001" prefHeight="58.0" prefWidth="1561.0" style="-fx-background-color: #303030;" text="You: Hmm it looks so dusty there" textFill="WHITE" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="OCR A Extended" size="22.0" />
          </font>
