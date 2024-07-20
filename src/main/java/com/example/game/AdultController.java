@@ -25,41 +25,19 @@ public class AdultController implements Initializable {
     private Stage dustStage;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
-
-    // @FXML
-    // private Button button;
+    private Adult3Controller adult3Controller;
 
     @FXML
-    private ImageView bgImage;
+    private Button button;
 
     @FXML
-    private ImageView openedDoor;
+    public AnchorPane scene; //made public so that adulstage can access key pressing focus mechanism.
 
     @FXML
-    private ImageView chickenPlayer;
+    private Rectangle topB,bottomB,leftB,rightB;
 
     @FXML
-    private AnchorPane scene;
-
-    @FXML
-    private Rectangle topB;
-
-    @FXML
-    private Rectangle bottomB;
-
-    @FXML
-    private Rectangle leftB;
-
-    @FXML
-    private Rectangle rightB;
-
-    @FXML Rectangle floor;
-
-    @FXML
-    private ImageView docSection;
-
-    @FXML
-    private ImageView warningIcon;
+    private ImageView chickenPlayer,bgImage,openedDoor,docSection,warningIcon, officeTable;
 
     @FXML
     private Label dialogLabel;
@@ -71,10 +49,11 @@ public class AdultController implements Initializable {
     private boolean done1 = false; //done 1 means completed & won popup stage 1
     private boolean done2 = false;
     private boolean done3 = false;
-    private int spawnPosX = 730;
-    private int spawnPosY = 660;
-    private int iconPosX_1 = 926;
-    private int iconPosY_1 = 96; 
+    private double spawnPosX,spawnPosY;
+    private double iconPosX_1 = 928.0;
+    private double iconPosY_1 = 111.0; 
+    private double iconPosX_2 = 960.0;
+    private double iconPosY_2 = 425.0;
 
     AnimationTimer collisionTimer = new AnimationTimer() {
         @Override
@@ -85,28 +64,34 @@ public class AdultController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        warningIcon.setVisible(true);
+
         chicken = new Chicken(chickenPlayer,scene);
+        spawnPosX = chickenPlayer.getLayoutX();
+        spawnPosY = chickenPlayer.getLayoutY();
         chicken.makeMovable();
         collisionTimer.start();
+
     }
 
-    public AdultController(MiniStageOpener miniStageOpener, Adult1Controller adult1Controller, Adult2Controller adult2Controller){
-        this.miniStageOpener=miniStageOpener;
+    public AdultController(MiniStageOpener miniStageOpener, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller){
+        this.miniStageOpener= miniStageOpener;
         this.adult1Controller = adult1Controller;
         this.adult2Controller = adult2Controller;
+        this.adult3Controller = adult3Controller;
         System.out.println("adulut1controller in adult controller ..." + adult1Controller );
     }
-    
-    // @FXML
-    // void handleButtonAction(ActionEvent event) {
-    //     miniStageOpener.openAdult1Stage();
-    // }
 
     @FXML
     void clickIcon(){
-        miniStageOpener.openAdult1Stage();
-    }
+        if (!done1)
+            miniStageOpener.openAdult1Stage();
+        else if (done1 && !done2 && !done3){
+            miniStageOpener.openAdult2Stage();
+            System.out.println("shd have opened sec popup");
+        } 
+        else if (done1 && done2 && !done3)
+            miniStageOpener.openAdult3Stage();
+        }   
 
     public void checkCollision(ImageView chickenPlayer, Rectangle top, Rectangle bottom, Rectangle right, Rectangle left){
         if (chickenPlayer.getBoundsInParent().intersects(top.getBoundsInParent())) {
@@ -114,8 +99,7 @@ public class AdultController implements Initializable {
             if (openedDoor.isVisible() && chickenPlayer.getBoundsInParent().intersects(openedDoor.getBoundsInParent())){
                 chicken.setwPressed(true);
                 nextStage();
-            }
-                
+            }   
         }
         if (chickenPlayer.getBoundsInParent().intersects(bottom.getBoundsInParent())) {
             chicken.setsPressed(false);
@@ -129,19 +113,28 @@ public class AdultController implements Initializable {
 
     }
 
-    //nextStage gets triggered upon entering the door to respawn sprite & update appearance
+    private void changeSpritePos(ImageView sprite,double newPosX,double newPosY){
+        sprite.setLayoutX(newPosX);
+        sprite.setLayoutY(newPosY);
+    }
+
+    // nextStage gets triggered upon entering the door to respawn sprite & update appearance
     public void nextStage(){
+        System.out.println("popup closed detected: " +done1 + " " + done2 + " " + done3);
         //to respawn
-        chickenPlayer.setLayoutX(spawnPosX);
-        chickenPlayer.setLayoutY(spawnPosY);
-        openedDoor.setVisible(false);
-        //control appearance of next office parts
+        changeSpritePos(chickenPlayer, spawnPosX, spawnPosY);
+        doorLocked(true); //lock the door again
+
         if (done1 && !done2 && !done3){
+            System.out.println("set up for next stage");
+            changeSpritePos(warningIcon, iconPosX_1, iconPosY_1);
+            System.out.println("Position: "+warningIcon.getLayoutX()+" "+warningIcon.getLayoutY());
             warningIcon.setVisible(true);
             docSection.setVisible(true);
-            //documentSpace.setVisibile(true);  //add the office table sprite pwis
         } else if (done1 && done2 && !done3){
-            //officeTable.setVisibile(true);
+            changeSpritePos(warningIcon, iconPosX_2, iconPosY_2);
+            warningIcon.setVisible(true);
+            officeTable.setVisible(true);
         } else if (done1 && done2 && done3){
             //can exit adult level
         }
@@ -151,29 +144,39 @@ public class AdultController implements Initializable {
     
     //gets triggered everytime popup window is closed.
     public void checkWinStatus() {
-        System.out.println("popup closed detected");
+        System.out.println("popup closed detected: " +done1 + " " + done2 + " " + done3);
+        System.out.println("winStatus: " +adult1Controller.hasCompleted() + " " + adult2Controller.hasCompleted());
         if (!done1){
             if(adult1Controller.hasCompleted()){
                 System.out.println("stage 1 is completed");
                 done1 = true;
-                // button.setVisible(false); //hide button cz game has been completed
-                unlockDoor();
+                warningIcon.setVisible(false); //hide button cz game has been completed
+                doorLocked(false);
             }
-        } else if (done1 && !done2){
+        } else if (done1 && !done2 && !done3){
             if(adult2Controller.hasCompleted()){
                 System.out.println("stage 2 is completed");
                 done2 = true;
                 warningIcon.setVisible(false); //hide button cz game has been completed
-                unlockDoor();
+                doorLocked(false);
             }
         } else if (done1 && done2 && !done3){
-
+            if(adult3Controller.hasCompleted()){
+                System.out.println("stage 2 is completed");
+                done2 = true;
+                warningIcon.setVisible(false); //hide button cz game has been completed
+                doorLocked(false);
+            }
         }
         
     }
     
-    public void unlockDoor() {
-        openedDoor.setVisible(true);
+    public void doorLocked(boolean bool) {
+        if(!bool)
+            openedDoor.setVisible(true); //unlock Door
+        else
+            openedDoor.setVisible(false); //lock Door
+
     }
 
 

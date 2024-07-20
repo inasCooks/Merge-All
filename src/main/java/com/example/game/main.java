@@ -10,6 +10,7 @@ public class main extends Application {
     private AdultController adultController;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
+    private Adult3Controller adult3Controller;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -18,12 +19,13 @@ public class main extends Application {
         
         adult1Controller = new Adult1Controller();
         adult2Controller = new Adult2Controller();
+        adult3Controller = new Adult3Controller();
         
-        sceneManager = new SceneManager(primaryStage, adultController, adult1Controller, adult2Controller);
+        sceneManager = new SceneManager(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
         sceneManager.switchToAdultLevel();
 
     }
-
+    
     public static void main(String[] args) {
         launch(args);
     }

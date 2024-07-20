@@ -2,6 +2,7 @@ package com.example.game;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,30 +11,27 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AdultStage extends AnchorPane implements MiniStageOpener {
-    private Stage primaryStage;
     private AdultController adultController;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
-    private MiniStageOpener miniStageOpener;
-    private Stage sortDocStage;
-    private Stage adultStage;
-    private Stage dustStage;
-    private Scene adultScene;
-    private Scene sortDocScene;
-    private Scene dustScene;
+    private Adult3Controller adult3Controller;
+    private Stage primaryStage, adultStage,sortDocStage, officeTableStage, dustStage;
+    private Scene adultScene, sortDocScene, dustScene, officeTableScene;
 
-    @FXML
-    private AnchorPane rootAnchorPane;
+    // @FXML
+    // private AnchorPane rootAnchorPane;
 
-    public AdultStage(Stage primaryStage, AdultController adultController, Adult1Controller adult1Controller, Adult2Controller adult2Controller) throws IOException{
+    public AdultStage(Stage primaryStage, AdultController adultController, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller) throws IOException{
         super(new AnchorPane());
         this.primaryStage = primaryStage;
         this.adultController=adultController;
         this.adult1Controller = adult1Controller;
         this.adult2Controller = adult2Controller;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdultStage.fxml"));
+        this.adult3Controller = adult3Controller;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("adult-mainStage.fxml"));
         try{
-            this.adultController= new AdultController(this, this.adult1Controller, this.adult2Controller);
+            // this.adultController= new AdultController(this, this.adult1Controller, this.adult2Controller);
+            this.adultController= new AdultController(this,adult1Controller,this.adult2Controller, this.adult3Controller);
             loader.setController(this.adultController);
             Parent root = loader.load();
             adultStage = primaryStage;
@@ -43,15 +41,25 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
             e.printStackTrace();
         }
         
+        primaryStage.setOnCloseRequest(event -> {
+            if (dustStage!=null)
+                dustStage.close();
+            if (sortDocStage!=null)
+                sortDocStage.close();
+        });
 
+        Platform.runLater(() -> {  // Schedule focus request after scene is shown
+            this.adultController.scene.setFocusTraversable(true);
+            this.adultController.scene.requestFocus();
+        });
     }
 
     @Override
     public void openAdult1Stage(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("adult1-popup.fxml"));
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("adult1-popup.fxml"));
         try{
-            loader.setController(adult1Controller);
-            Parent dustStageRoot = loader.load();
+            loader1.setController(adult1Controller);
+            Parent dustStageRoot = loader1.load();
             dustScene = new Scene(dustStageRoot); 
             
 
@@ -76,12 +84,11 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
     @Override
     public void openAdult2Stage(){
         System.out.println("poppin up doc sort stage");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("adult2-popup.fxml"));
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("adult2-popup.fxml"));
         try{
             this.adult2Controller= new Adult2Controller();
-            loader.setController(this.adult2Controller);
-            Parent sortDocRoot = loader.load();
-            sortDocStage = primaryStage;
+            loader2.setController(this.adult2Controller);
+            Parent sortDocRoot = loader2.load();
             sortDocScene = new Scene(sortDocRoot); 
             
 
@@ -102,8 +109,31 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
         }  
     }
 
+    @Override
     public void openAdult3Stage(){
-        System.out.println("poppin up doc sort stage");
-        //do the same as stage 1 & 2
+        System.out.println("poppin up THIRD POPUP stage");
+        FXMLLoader loader3 = new FXMLLoader(getClass().getResource("adult3-popup.fxml"));
+        try{
+            this.adult2Controller= new Adult2Controller();
+            loader3.setController(this.adult2Controller);
+            Parent officeRoot = loader3.load();
+            officeTableScene = new Scene(officeRoot); 
+            
+
+            if (officeTableStage==null){
+                officeTableStage = new Stage();
+                officeTableStage.setTitle("Office Table");
+                officeTableStage.setScene(officeTableScene);
+            } else {
+                officeTableStage.setOnHiding(e -> {
+                    this.adultController.checkWinStatus();
+                });
+            }
+            officeTableStage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println("somethin wrong with popup 2 loaaaader");
+        }  
     }
 }

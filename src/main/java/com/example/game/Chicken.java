@@ -1,18 +1,14 @@
 package com.example.game;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Rectangle;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class Chicken {
     private BooleanProperty wPressed = new SimpleBooleanProperty();
@@ -48,14 +44,22 @@ public class Chicken {
 
     public void makeMovable(){
         movementSetup();
-
-        keyPressed.addListener(((observableValue, aBoolean, t1) -> {
-            if(!aBoolean){
-                timer.start();
-            } else {
-                timer.stop();
-            }
-        }));
+        System.out.println("makeMovable called " + this);
+        
+            keyPressed.addListener(((observableValue, aBoolean, t1) -> {
+                try{
+                    if(!aBoolean){
+                        
+                        timer.start();
+                        System.out.println("timer.start");
+                    } else {
+                        timer.stop();
+                    }
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }));
+            System.out.println("makeMovable finished");
     }
 
     private void movementSetup() {
@@ -99,7 +103,6 @@ public class Chicken {
     AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long timestamp) {
-
             if(wPressed.get()) {
                 sprite.setLayoutY(sprite.getLayoutY() - movementVariable);
             }
