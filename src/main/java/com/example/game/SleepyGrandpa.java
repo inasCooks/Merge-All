@@ -37,12 +37,12 @@ public class SleepyGrandpa {
 
         // Load sleepAnim frames for grandpa
         for (int i = 0; i < frames.length; i++) {
-            frames[i] = new Image(imagePath + (i + 1) + ".png");
+            frames[i] = new Image(getClass().getResourceAsStream(imagePath + (i + 1) + ".png"));
         }
 
         //load sleepAnim frames for zzz effect
         for (int i = 0; i < framesZZZ.length; i++) {
-            framesZZZ[i] = new Image(zzzImagePath + (i + 1) + ".png");
+            framesZZZ[i] = new Image(getClass().getResourceAsStream(zzzImagePath + (i + 1) + ".png"));
         }
 
         // Set up the Timeline for the sleepAnim

@@ -18,7 +18,7 @@ public class KettleBoiling {
 
         // Load animation frames for kettle boiling animation
         for (int i = 0; i < frames.length; i++) {
-            frames[i] = new Image(imagePath + (i + 1) + ".png");
+            frames[i] = new Image(getClass().getResourceAsStream(imagePath + (i + 1) + ".png"));
         }
 
         kettleAnim = new Timeline(new KeyFrame(Duration.millis(frameDuration), e -> updateFrame()));

@@ -68,10 +68,10 @@ public class KettleStageCont implements Initializable {
         }));
         progressTimer.setCycleCount(Timeline.INDEFINITE);
 
-        sleepyGrandpa = new SleepyGrandpa("../../../resources/sprite/senior/sleepy_grandpa/", grandpaImageView, "../../../resources/sprite/senior/zzz_animation/", snoozeImageView, this);
-        kettleBoiling = new KettleBoiling("../../../resources/sprite/senior/kettle_animation/", kettleImageView);
-        playButton = new MyButton( "../../../resources/sprite/senior/buttons/play/1.png", "../../../resources/sprite/senior/buttons/play/2.png" ,playBtn);
-        replayButton = new MyButton( "../../../resources/sprite/senior/buttons/replay/1.png", "../../../resources/sprite/senior/buttons/replay/2.png", replayBtn);
+        sleepyGrandpa = new SleepyGrandpa("/sprite/senior/sleepy_grandpa/", grandpaImageView, "/sprite/senior/zzz_animation/", snoozeImageView, this);
+        kettleBoiling = new KettleBoiling("/sprite/senior/kettle_animation/", kettleImageView);
+        playButton = new MyButton( "/sprite/senior/buttons/play/1.png", "/sprite/senior/buttons/play/2.png" ,playBtn);
+        replayButton = new MyButton( "/sprite/senior/buttons/replay/1.png", "/sprite/senior/buttons/replay/2.png", replayBtn);
         
         //replay button is removed by default.
         endingScene.setVisible(false);

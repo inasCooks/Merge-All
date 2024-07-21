@@ -22,7 +22,7 @@ public class ChildCont {
 
     //scene setup
     @FXML
-    private AnchorPane scene;
+    private AnchorPane scene,pauseOverlay;
     @FXML
     public ImageView background;
     @FXML
@@ -36,11 +36,9 @@ public class ChildCont {
     private Label progressLabel;
 
     //pause
-    @FXML
-    private AnchorPane pauseOverlay;
     public Button pauseButton, resumeButton, saveButton, returnButton;
 
-    private ChickenChild chickenChild;
+    private Chicken chicken;
     private ImageView[] objects;
     private int currentObjectIndex = 0;
     private String playerName;
@@ -55,18 +53,18 @@ public class ChildCont {
         System.out.println("ChildController initialized.");
         System.out.println("isNewGame: " + isNewGame);
         System.out.println("isGameStateLoaded: " + isGameStateLoaded);
+
         objects = new ImageView[]{object1, object2, object3, object4, object5};
-        chickenChild = new ChickenChild(chickenSprite, scene, background, this::onObjectCollected);
-        chickenChild.setObjects(objects);
+        chicken = new Chicken(chickenSprite, scene, background, this::onObjectCollected);
+        chicken.setObjects(objects);
         System.out.println("objects " + objects);
-        
         for (int i = 1; i < objects.length; i++) {
             objects[i].setVisible(false);
         }
 
         updateProgress();
-        scene.requestFocus();
-
+        Platform.runLater(scene::requestFocus);
+        // scene.requestFocus();
     }
 
     @FXML
@@ -79,8 +77,8 @@ public class ChildCont {
         System.out.println("Starting New Game.");
         openNamePrompt();
         showStart();
-        chickenChild.setPlayerName(playerName);
-        chickenChild.makeMovable();
+        chicken.setPlayerName(playerName);
+        chicken.makeMovable();
         System.out.println("chicken makemovable called from startNewGame");
     }
 
@@ -91,8 +89,8 @@ public class ChildCont {
             isGameStateLoaded = true;
             playerName = gameState.getPlayerName();
             currentObjectIndex = gameState.getCurrentObjectIndex();
-            chickenChild.setSpritePosition(gameState.getChickenPosition());
-            chickenChild.setPlayerName(playerName);
+            chicken.setSpritePosition(gameState.getChickenPosition());
+            chicken.setPlayerName(playerName);
 
             System.out.println("Loading game state: " + playerName);
 
@@ -100,7 +98,7 @@ public class ChildCont {
                 objects[i].setVisible(i == currentObjectIndex);
             }
 
-            chickenChild.makeMovable();
+            chicken.makeMovable();
             updateProgress();
         }
 
@@ -176,7 +174,7 @@ public class ChildCont {
     private void pauseGame() {
         isPaused = true;
         pauseOverlay.setVisible(true);
-        chickenChild.pauseMovement();
+        chicken.pauseMovement();
     }
 
     //resume the game
@@ -184,7 +182,7 @@ public class ChildCont {
     private void resumeGame() {
         isPaused = false;
         pauseOverlay.setVisible(false);
-        chickenChild.resumeMovement();
+        chicken.resumeMovement();
         scene.requestFocus();
     }
 
@@ -195,7 +193,7 @@ public class ChildCont {
     }
 
     private void saveGameState() {
-        GameState gameState = new GameState(chickenChild.getPlayerName(), currentObjectIndex, chickenChild.getSpritePosition());
+        GameState gameState = new GameState(chicken.getPlayerName(), currentObjectIndex, chicken.getSpritePosition());
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("gamestate.dat"))) {
             oos.writeObject(gameState);
@@ -238,7 +236,7 @@ public class ChildCont {
         System.out.println("Resetting game state.");
         playerName = null;
         currentObjectIndex = 0;
-        chickenChild.setSpritePosition(new double[]{0, 0});
+        chicken.setSpritePosition(new double[]{0, 0});
         isNewGame = true;
         for (ImageView object : objects) {
             object.setVisible(false);

@@ -31,7 +31,7 @@ public class SeniorCont implements Initializable{
     private AnchorPane rootAnchorPane;
 
     @FXML
-    private Rectangle topB,leftB,rightB;
+    private Rectangle topB,leftB,rightB, bottomB;
 
     @FXML
     private ImageView bgImageView, chickenSprite, npc, album;
@@ -54,7 +54,7 @@ public class SeniorCont implements Initializable{
     AnimationTimer collisionTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
-            checkCollision(chickenSprite, topB, rightB, leftB);
+            checkCollision(chickenSprite, topB, bottomB, rightB, leftB);
         }
     };
 
@@ -140,7 +140,7 @@ public class SeniorCont implements Initializable{
         
     }
 
-    public void checkCollision(ImageView chickenPlayer, Rectangle top, Rectangle right, Rectangle left){
+    public void checkCollision(ImageView chickenPlayer, Rectangle top, Rectangle bottom,  Rectangle right, Rectangle left){
         if (chickenPlayer.getBoundsInParent().intersects(top.getBoundsInParent())) {
             chicken.setwPressed(false);
         }

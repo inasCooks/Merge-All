@@ -74,8 +74,8 @@ public class SeniorStage extends AnchorPane implements MiniStageOpener {
             if(kettleStage==null){
                 kettleStage = new Stage();
                 kettleStage.setTitle("The Kettle Challenge");
-                Image icon = new Image(getClass().getClassLoader().getResource("sprite/senior/grand_chicken.png").toExternalForm());
-                kettleStage.getIcons().add(icon);
+                // Image icon = new Image(getClass().getClassLoader().getResource("sprite/senior/grand_chicken.png").toExternalForm());
+                // kettleStage.getIcons().add(icon);
                 kettleStage.setScene(kettleScene);
             }
             else{

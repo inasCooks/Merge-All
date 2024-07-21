@@ -18,6 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        GameStateManager.deleteGameState();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
         mainMenuCont = new MainMenuCont();
         fxmlLoader.setController(mainMenuCont);
@@ -29,9 +30,9 @@ public class Main extends Application {
         // adult1Controller = new Adult1Controller();
         // adult2Controller = new Adult2Controller();
         // adult3Controller = new Adult3Controller();
-        sceneManager = new SceneManager(primaryStage);
+        // sceneManager = new SceneManager(primaryStage);
         // sceneManager = new SceneManager(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
-        sceneManager.switchToAdultLevel();
+        // sceneManager.switchToAdultLevel();
         // sceneManager.switchToSeniorLevel();
 
     }

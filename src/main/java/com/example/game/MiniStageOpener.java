@@ -7,3 +7,5 @@ public interface MiniStageOpener {
     void openKettleStage();
     void openAlbumStage();
 }
+
+

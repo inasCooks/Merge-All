@@ -1,5 +1,6 @@
 package com.example.game;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import java.io.IOException;
 
 public class ChildStage {
     private Stage childStage, primaryStage;
+    private Scene childScene;
     private ChildCont childCont;
 
     //load new game
@@ -22,18 +24,17 @@ public class ChildStage {
     }
 
     private void initChildStage(Stage primaryStage, GameState gameState) {
-        this.primaryStage = primaryStage;
-        childCont = new ChildCont();
+        // this.primaryStage = primaryStage;
+        // childCont = new ChildCont();
         FXMLLoader loaderChild = new FXMLLoader(getClass().getResource("child-stage.fxml"));
         try {
-            loaderChild.setController(childCont);
             Parent root = loaderChild.load();
-            Scene childScene = new Scene(root);
+            childScene = new Scene(root);
             childStage = primaryStage;
             childStage.setTitle("Child Stage");
             childStage.setScene(childScene);
 
-            // ChildCont childCont = fxmlLoader.getController();
+            childCont = loaderChild.getController();
             //if there is saved game, load game state
             if (gameState != null) {
                 childCont.initGameState(gameState);
@@ -43,7 +44,8 @@ public class ChildStage {
                 childCont.startNewGame();
             }
 
-            childScene.getRoot().requestFocus();
+            
+            
         }
         catch (IOException e) {
             System.out.println("Error in initChildStage()");

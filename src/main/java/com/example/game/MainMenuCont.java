@@ -38,32 +38,32 @@ public class MainMenuCont {
     //load saved game
     @FXML
     protected void handleContinueButtonAction(ActionEvent event) {
-        // try {
-        //     // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("child-stage.fxml"));
-        //     // Parent newSceneRoot = fxmlLoader.load();
-        //     // fxmlLoader.setController(childCont);
-        //     // // ChildCont childCont = fxmlLoader.getController();
-        //     // childStage.initChildStage();
-        //     GameState gameState = loadGameState();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("child-stage.fxml"));
+            Parent newSceneRoot = fxmlLoader.load();
+            // fxmlLoader.setController(childCont);
+            ChildCont childCont = fxmlLoader.getController();
+            // childStage.initChildStage();
+            GameState gameState = loadGameState();
 
-        //     if (gameState != null){
-        //         childCont.initGameState(gameState);
-        //     }
-        //     else{
-        //         System.out.println("No saved game found.");
-        //         showNoSaveGame();
-        //         return;
-        //     }
+            if (gameState != null){
+                childCont.initGameState(gameState);
+            }
+            else{
+                System.out.println("No saved game found.");
+                showNoSaveGame();
+                return;
+            }
 
-        //     Scene newScene = new Scene(newSceneRoot);
-        //     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //     stage.setScene(newScene);
-        //     stage.setTitle("Stage 1");
-        //     newScene.getRoot().requestFocus();
-        // }
-        // catch (IOException e) {
-        //     System.out.println("Error in handleContinueButtonAction().");
-        // }
+            Scene newScene = new Scene(newSceneRoot);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(newScene);
+            stage.setTitle("Stage 1");
+            newScene.getRoot().requestFocus();
+        }
+        catch (IOException e) {
+            System.out.println("Error in handleContinueButtonAction().");
+        }
     }
 
     //load game state
