@@ -15,17 +15,21 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+// import java.util.logging.Level;
 
 public class AdultController implements Initializable {
 
     private Chicken chicken;
     private MiniStageOpener miniStageOpener;
+    private LevelOpener levelOpener;
     private Stage dustStage;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
     private Adult3Controller adult3Controller;
+    private SceneManager sceneManager;
 
     @FXML
     private Button button;
@@ -78,8 +82,13 @@ public class AdultController implements Initializable {
 
     }
 
-    public AdultController(MiniStageOpener miniStageOpener, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller){
+    public Chicken getChicken(Chicken chicken){
+        return chicken;
+    }
+
+    public AdultController(MiniStageOpener miniStageOpener, LevelOpener levelOpener,Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller){
         this.miniStageOpener= miniStageOpener;
+        this.levelOpener = levelOpener;
         this.adult1Controller = adult1Controller;
         this.adult2Controller = adult2Controller;
         this.adult3Controller = adult3Controller;
@@ -119,7 +128,8 @@ public class AdultController implements Initializable {
         if (chickenPlayer.getBoundsInParent().intersects(top.getBoundsInParent())) {
             chicken.setwPressed(false);
             if (openedDoor.isVisible() && chickenPlayer.getBoundsInParent().intersects(openedDoor.getBoundsInParent())){
-                chicken.setwPressed(true);
+                chicken.setwPressed(false);
+                doorLocked(true);
                 nextStage();
             }   
         }
@@ -142,13 +152,20 @@ public class AdultController implements Initializable {
 
     // nextStage gets triggered upon entering the door to respawn sprite & update appearance
     public void nextStage(){
-        System.out.println("popup closed detected: " +done1 + " " + done2 + " " + done3);
+        System.out.println("popup closed detected: " + done1 + " " + done2 + " " + done3);
         
         if (done1 && done2 && done3){
             System.out.print("should have exited the adult level"); //no need to respawn after done all popups
             chickenPlayer.setVisible(false);
-            // curDialog++;
-            //ask scene manager to switch to grandpa level.
+            chicken.pauseMovement();
+            try{
+                    // sceneManager.getSceneManager().switchToSeniorLevel();
+                levelOpener.switchToSeniorLevel();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+            
+            
         }else{
             changeSpritePos(chickenPlayer, spawnPosX, spawnPosY); //respawn
             doorLocked(true); //lock the door again

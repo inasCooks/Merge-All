@@ -13,7 +13,6 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
@@ -56,11 +55,11 @@ public class ChildCont {
         System.out.println("ChildController initialized.");
         System.out.println("isNewGame: " + isNewGame);
         System.out.println("isGameStateLoaded: " + isGameStateLoaded);
-
-        chickenChild = new ChickenChild(chickenSprite, scene, background, this::onObjectCollected);
-        chickenChild.setObjects(new ImageView[]{object1, object2, object3, object4, object5});
-
         objects = new ImageView[]{object1, object2, object3, object4, object5};
+        chickenChild = new ChickenChild(chickenSprite, scene, background, this::onObjectCollected);
+        chickenChild.setObjects(objects);
+        System.out.println("objects " + objects);
+        
         for (int i = 1; i < objects.length; i++) {
             objects[i].setVisible(false);
         }
@@ -82,6 +81,7 @@ public class ChildCont {
         showStart();
         chickenChild.setPlayerName(playerName);
         chickenChild.makeMovable();
+        System.out.println("chicken makemovable called from startNewGame");
     }
 
     //setup for saved game

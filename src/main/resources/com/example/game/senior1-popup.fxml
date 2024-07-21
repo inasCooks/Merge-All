@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane fx:id="myRootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #303030;" styleClass="scene" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="kettleImageView" fitHeight="286.0" fitWidth="307.0" layoutX="1.0" layoutY="57.0">
+         <image>
+            <Image url="@../../../sprite/senior/kettle_animation/1.png" />
+         </image>
+      </ImageView>
+      <ImageView id="grand_chicken" fx:id="grandpaImageView" fitHeight="224.0" fitWidth="275.0" layoutX="325.0" layoutY="112.0" onMouseClicked="#clickGrandpa" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/senior/sleepy_grandpa/1.png" />
+         </image>
+      </ImageView>
+      <ImageView id="zzz" fx:id="snoozeImageView" fitHeight="58.0" fitWidth="96.0" layoutX="431.0" layoutY="100.0" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/senior/zzz_animation/1.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="progressBar" layoutX="96.0" layoutY="65.0" prefHeight="34.0" prefWidth="225.0" progress="0.0" />
+      <Rectangle fx:id="transparentRect1" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="42.0" layoutX="92.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="233.0" />
+      <Rectangle fx:id="transparentRect" arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="34.0" layoutX="97.0" layoutY="65.0" opacity="0.27" stroke="BLACK" strokeType="INSIDE" width="226.0" />
+      <Rectangle fx:id="greenArea" arcHeight="10.0" arcWidth="5.0" fill="#7bff3d" height="34.0" layoutX="190.0" layoutY="65.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="31.0" />
+      <Label fx:id="progressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" layoutY="32.0" prefHeight="34.0" prefWidth="57.0" text="0%" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+      <!-- <Button fx:id="startChallengeBtn" layoutX="204.0" layoutY="337.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="191.0" text="START CHALLENGE" /> -->
+      <Rectangle fx:id="marker" arcHeight="5.0" arcWidth="5.0" fill="#ae1212" height="48.0" layoutX="187.0" layoutY="58.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="3.0" width="17.0" />
+      <Rectangle fx:id="wrapper" arcHeight="5.0" arcWidth="5.0" fill="#545353" height="400.0" layoutY="1.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <ImageView fx:id="playBtn" fitHeight="237.0" fitWidth="233.0" layoutX="205.0" layoutY="84.0" onMouseClicked="#clickStart" onMouseEntered="#hoverButton" onMouseExited="#exitButton" pickOnBounds="false" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/senior/buttons/play/1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="replayBtn" fitHeight="237.0" fitWidth="233.0" layoutX="205.0" layoutY="84.0" onMouseClicked="#clickStart" onMouseEntered="#hoverButton" onMouseExited="#exitButton" pickOnBounds="false" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/senior/buttons/replay/1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="endingScene" fitHeight="339.0" fitWidth="600.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../sprite/senior/win_part1.png" />
+         </image>
+      </ImageView>   
+   </children>
+   
+
+</AnchorPane>

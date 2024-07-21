@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="level3-root" fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1535.0" onMouseClicked="#clickAnywhere" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="bgImageView" fitHeight="805.0" fitWidth="805.0" layoutX="344.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../sprite/senior/seniorStage_bg.png" />
+            </image>
+      </ImageView>
+      <ImageView id="npc" fx:id="npc" fitHeight="176.0" fitWidth="179.0" layoutX="920.0" layoutY="323.2" onMouseClicked="#clickNPC" preserveRatio="true" AnchorPane.bottomAnchor="301.0" AnchorPane.topAnchor="323.0">
+         <image>
+            <Image url="@../../../sprite/senior/npc_grandpa/1.png" />
+         </image>
+      </ImageView>
+      <ImageView id="album" fx:id="album" fitHeight="96.0" fitWidth="96.0" layoutX="714.0" layoutY="236.0" onMouseClicked="#clickAlbum" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/senior/album_sprite/1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="chickenSprite" fitHeight="97.0" fitWidth="88.0" layoutX="434.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/adult/1.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="leftB" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="805.0" layoutX="-2.0" layoutY="-1.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="345.0" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Rectangle fx:id="rightB" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="806.0" layoutX="1146.0" layoutY="-1.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="390.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Rectangle fx:id="topB" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="362.0" layoutX="346.0" layoutY="-3.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="799.0" />
+      <Label fx:id="dialogLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="544.0" onMouseClicked="#clickAnywhere" prefHeight="81.0" prefWidth="1535.0" style="-fx-background-color: #303030;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="823.0" style="-fx-background-color: light grey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane prefHeight="472.0" prefWidth="726.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="45.0" layoutY="56.0" prefHeight="400.0" prefWidth="307.0">
+               <children>
+                  <ImageView fitHeight="549.0" fitWidth="832.0" layoutX="-105.0" layoutY="-70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../sprite/senior/album_elements/open%20album.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="album1" fitHeight="119.0" fitWidth="131.0" layoutX="5.0" layoutY="14.0">
+                     <image>
+                        <Image url="@../../../sprite/senior/album_elements/frame.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="album3" fitHeight="119.0" fitWidth="131.0" layoutX="21.0" layoutY="260.0">
+                     <image>
+                        <Image url="@../../../sprite/senior/album_elements/frame.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="album2" fitHeight="119.0" fitWidth="131.0" layoutX="152.0" layoutY="141.0">
+                     <image>
+                        <Image url="@../../../sprite/senior/album_elements/frame.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="136.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Starting my first day school&quot;" textAlignment="CENTER" wrappingWidth="150.43511962890625">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="25.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Broke my favourite toy&quot;" textAlignment="CENTER" wrappingWidth="128.828125">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="161.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Getting my first job&quot;" textAlignment="CENTER" wrappingWidth="120.0257568359375">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Text>
+               </children></Pane>
+            <Pane layoutX="372.0" layoutY="56.0" prefHeight="398.0" prefWidth="292.0">
+               <children>
+                  <Text layoutX="26.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Age is just a number&quot;" textAlignment="CENTER" wrappingWidth="125.62576293945312">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="-11.0" layoutY="-2.0" prefHeight="404.0" prefWidth="5.0" style="-fx-background-color: black;" />
+                  <ImageView fx:id="album4" fitHeight="119.0" fitWidth="131.0" layoutX="5.0" layoutY="23.0">
+                     <image>
+                        <Image url="@../../../sprite/senior/album_elements/frame.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="album5" fitHeight="119.0" fitWidth="131.0" layoutX="146.0" layoutY="140.0">
+                     <image>
+                        <Image url="@../../../sprite/senior/album_elements/frame.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="album6" fitHeight="119.0" fitWidth="131.0" layoutX="21.0" layoutY="247.0">
+                     <image>
+                        <Image url="@../../../sprite/senior/album_elements/frame.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="156.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Resting my peace&quot;" textAlignment="CENTER" wrappingWidth="111.22119140625">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="136.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;The best day of my life&quot;" textAlignment="CENTER" wrappingWidth="134.4742431640625">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="congratulationsLabel" alignment="CENTER" layoutX="-372.0" layoutY="143.0" prefHeight="69.0" prefWidth="823.0" style="-fx-background-color: #303030;" text="Congratulations! You've matched all the images correctly!" textAlignment="CENTER" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="Courier New Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Text fill="#fffefe" layoutX="119.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match the photos according to the description given." wrappingWidth="464.7301940917969">
+               <font>
+                  <Font name="Courier New Bold" size="14.0" />
+               </font></Text>
+            <ImageView fx:id="pic1" fitHeight="100.0" fitWidth="100.0" layoutX="700.0" layoutY="14.0" onDragDone="#handleDragDone">
+               <image>
+                  <Image url="@../../../sprite/senior/album_pics/first day.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic2" fitHeight="97.0" fitWidth="98.0" layoutX="701.0" layoutY="27.0" onDragDone="#handleDragDone">
+               <image>
+                  <Image url="@../../../sprite/senior/album_pics/toys broken.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic3" fitHeight="98.0" fitWidth="99.0" layoutX="701.0" layoutY="43.0" onDragDone="#handleDragDone">
+               <image>
+                  <Image url="@../../../sprite/senior/album_pics/officework.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic4" fitHeight="96.0" fitWidth="98.0" layoutX="701.0" layoutY="56.0" onDragDone="#handleDragDone">
+               <image>
+                  <Image url="@../../../sprite/senior/album_pics/married.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic5" fitHeight="96.0" fitWidth="100.0" layoutX="700.0" layoutY="76.0" onDragDone="#handleDragDone">
+               <image>
+                  <Image url="@../../../sprite/senior/album_pics/old.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic6" fitHeight="97.0" fitWidth="100.0" layoutX="700.0" layoutY="93.0" onDragDone="#handleDragDone">
+               <image>
+                  <Image url="@../../../sprite/senior/album_pics/die.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

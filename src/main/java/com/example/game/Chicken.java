@@ -35,14 +35,14 @@ public class Chicken {
     }
 
     private int movementVariable = 2;
-    private ImageView sprite;
+    private ImageView chickenSprite;
     private AnchorPane sceneAnchorPane;
     private String playerName;
     private boolean isPaused = false;
 
 
     public Chicken(ImageView chickenImageView, AnchorPane sceneAnchorPane){
-        this.sprite = chickenImageView;
+        this.chickenSprite = chickenImageView;
         this.sceneAnchorPane = sceneAnchorPane;
     }
 
@@ -59,9 +59,11 @@ public class Chicken {
                     if(!aBoolean){
                         
                         timer.start();
-                        System.out.println("timer.start");
+                        // timerStart(this.timer);
+                        System.out.println("timer start");
                     } else {
                         timer.stop();
+                        // timerStop(this.timer);
                     }
                 } catch (Exception e){
                     e.printStackTrace();
@@ -71,6 +73,8 @@ public class Chicken {
     }
 
     protected void movementSetup() {
+        System.out.println("movementSetup called, isPaused " + isPaused);
+        if (isPaused) return;
         sceneAnchorPane.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.W) {
                 wPressed.set(true);
@@ -107,26 +111,27 @@ public class Chicken {
             }
         });
     }
-
+    
     AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long timestamp) {
+            System.out.println("timer biasa is called");
             if (isPaused) return;
 
             if(wPressed.get()) {
-                sprite.setLayoutY(sprite.getLayoutY() - movementVariable);
+                chickenSprite.setLayoutY(chickenSprite.getLayoutY() - movementVariable);
             }
 
             if(sPressed.get()){
-                sprite.setLayoutY(sprite.getLayoutY() + movementVariable);
+                chickenSprite.setLayoutY(chickenSprite.getLayoutY() + movementVariable);
             }
 
             if(aPressed.get()){
-                sprite.setLayoutX(sprite.getLayoutX() - movementVariable);
+                chickenSprite.setLayoutX(chickenSprite.getLayoutX() - movementVariable);
             }
 
             if(dPressed.get()){
-                sprite.setLayoutX(sprite.getLayoutX() + movementVariable);
+                chickenSprite.setLayoutX(chickenSprite.getLayoutX() + movementVariable);
             }
         }
     };
@@ -134,12 +139,22 @@ public class Chicken {
     public void pauseMovement() {
         isPaused = true;
         timer.stop();
-        System.out.println("Movement paused.");
+        // timerStop(this.timer);
+        System.out.println("Movement paused.");     
     }
 
     public void resumeMovement() {
         isPaused = false;
         timer.start();
-        System.out.println("Movement paused.");
+        // timerStart(this.timer);
+        System.out.println("Movement resumed.");
     }
+
+    // protected void timerStart(AnimationTimer timer){
+    //     timer.start();
+    // }
+
+    // protected void timerStop(AnimationTimer timer){
+    //     timer.stop();
+    // }
 }

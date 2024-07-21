@@ -19,7 +19,7 @@
          </font></Label>
       <ImageView fitHeight="260.0" fitWidth="342.0" layoutX="20.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/BookShelf.png" />
+            <Image url="@../../../sprite/adult/BookShelf.png" />
          </image>
       </ImageView>
       <Label fx:id="dustMsg" layoutX="20.0" layoutY="271.0" prefHeight="27.0" prefWidth="339.0" style="-fx-background-color: #303030;" text="Ok, it looks clean now" textAlignment="CENTER" textFill="WHITE" visible="false">
@@ -30,77 +30,77 @@
       </Label>
       <ImageView fx:id="dust1" fitHeight="67.0" fitWidth="127.0" layoutX="8.0" layoutY="101.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView id="dustbt" fx:id="dust2" accessibleRole="BUTTON" fitHeight="61.0" fitWidth="113.0" layoutX="81.0" layoutY="32.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust3" fitHeight="61.0" fitWidth="113.0" layoutX="94.0" layoutY="163.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust4" fitHeight="61.0" fitWidth="113.0" layoutX="263.0" layoutY="81.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust5" fitHeight="61.0" fitWidth="113.0" layoutX="127.0" layoutY="71.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust6" fitHeight="67.0" fitWidth="127.0" layoutX="230.0" layoutY="152.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust7" fitHeight="75.0" fitWidth="134.0" layoutX="188.0" layoutY="12.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust8" fitHeight="67.0" fitWidth="127.0" layoutX="171.0" layoutY="217.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust9" fitHeight="67.0" fitWidth="127.0" layoutX="28.0" layoutY="191.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust10" fitHeight="67.0" fitWidth="127.0" layoutX="175.0" layoutY="93.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust11" fitHeight="67.0" fitWidth="127.0" layoutX="170.0" layoutY="175.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust12" accessibleRole="BUTTON" fitHeight="75.0" fitWidth="133.0" layoutX="15.0" layoutY="44.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust13" fitHeight="67.0" fitWidth="127.0" layoutX="75.0" layoutY="231.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust14" fitHeight="61.0" fitWidth="113.0" layoutX="273.0" layoutY="91.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dust15" fitHeight="67.0" fitWidth="127.0" layoutX="257.0" layoutY="217.0" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../sprite/LoungeDust.png" />
+            <Image url="@../../../sprite/adult/LoungeDust.png" />
          </image>
       </ImageView>
    </children>

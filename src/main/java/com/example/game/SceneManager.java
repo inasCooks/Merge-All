@@ -1,21 +1,28 @@
 package com.example.game;
 
 import java.io.IOException;
+import java.util.random.RandomGenerator.LeapableGenerator;
+
 import javafx.stage.Stage;
 
 
-public class SceneManager {
+public class SceneManager implements LevelOpener{
 
     Stage primaryStage;
     private AdultStage adultStage;
+    private SeniorStage seniorStage;
     private AdultController adultController;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
     private Adult3Controller adult3Controller;
+    private LevelOpener levelOpener;
+    
 
     public SceneManager(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
+
+    public SceneManager getSceneManager(){ return this; } // getSceneManager
 
     public void switchToChildStage() throws IOException{
         
@@ -23,14 +30,13 @@ public class SceneManager {
 
     public void switchToAdultLevel() throws IOException{
         // adultStage = new AdultStage(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
-        adultStage = new AdultStage(primaryStage);
+        adultStage = new AdultStage(primaryStage, this);
 
     }
-    // public void switchToLevel3() throws IOException {
-    //     this.level3 = new Level3(primaryStage, level3Controller, this.kettleStageController, this.albumStageController);
-    //     level3.initStage3();
-    //     System.out.println("scene manager: " + kettleStageController);
-    // }
+    @Override
+    public void switchToSeniorLevel() throws IOException {
+        this.seniorStage = new SeniorStage(primaryStage);
+    }
 
     // Add methods for other stages (Stage1, Stage2, etc.) as needed
 }
