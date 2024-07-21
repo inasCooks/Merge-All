@@ -39,10 +39,7 @@ public class ChildCont {
     //pause
     @FXML
     private AnchorPane pauseOverlay;
-    public Button pauseButton;
-    public Button resumeButton;
-    public Button saveButton;
-    public Button returnButton;
+    public Button pauseButton, resumeButton, saveButton, returnButton;
 
     private ChickenChild chickenChild;
     private ImageView[] objects;
@@ -71,6 +68,11 @@ public class ChildCont {
         updateProgress();
         scene.requestFocus();
 
+    }
+
+    @FXML
+    void clickNPC(){
+        System.out.println("meow");
     }
 
     //setup for new game
@@ -116,7 +118,8 @@ public class ChildCont {
     }
 
     //change the visibility of the objects
-    private void onObjectCollected() {
+    public void onObjectCollected() {
+        System.out.println("Object Collected: " + currentObjectIndex);
         objects[currentObjectIndex].setVisible(false);
         currentObjectIndex++;
 

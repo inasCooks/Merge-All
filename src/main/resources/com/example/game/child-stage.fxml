@@ -32,14 +32,14 @@
    <ImageView fx:id="object4" fitHeight="50.0" fitWidth="50.0" layoutX="569.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../../sprite/mainMenu_child/object.png" />
    </ImageView>
-   <ImageView fx:id="object5" fitHeight="50.0" fitWidth="50.0" layoutX="436.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../sprite/mainMenu_child/object.png" />
-   </ImageView>
    <Label fx:id="progressLabel" layoutX="340.0" layoutY="19.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="Objects Collected: 0/5" textAlignment="CENTER">
       <font>
          <Font name="Comic Sans MS" size="17.0" />
       </font>
    </Label>
+   <ImageView fx:id="object5" fitHeight="50.0" fitWidth="50.0" layoutX="436.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../../../sprite/mainMenu_child/object.png" />
+   </ImageView>
    <Button fx:id="pauseButton" layoutX="1036.0" layoutY="22.0" mnemonicParsing="false" onAction="#handlePauseButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@main-menu-style.css" />
 
    <!-- Pause Menu -->
@@ -61,7 +61,7 @@
             </VBox.margin></Button>
       </VBox>
    </AnchorPane>
-   <ImageView fitHeight="84.0" fitWidth="95.0" layoutX="353.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="chic" fitHeight="84.0" fitWidth="95.0" layoutX="353.0" layoutY="386.0" onMouseClicked="#clickNPC" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../../sprite/mainMenu_child/chickNPC.png" />
       </image>

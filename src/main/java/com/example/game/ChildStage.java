@@ -13,7 +13,6 @@ public class ChildStage {
 
     //load new game
     public ChildStage(Stage primaryStage) {
-        
         initChildStage(primaryStage, null);
     }
 

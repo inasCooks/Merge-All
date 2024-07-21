@@ -98,6 +98,7 @@ public class ChickenChild extends Chicken {
 
     public void setObjects(ImageView[] objects) {
         this.objects = objects;
+        System.out.println("objects " + objects);
     }
 
     // private void checkObjectCollection() {
