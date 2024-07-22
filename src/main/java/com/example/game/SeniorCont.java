@@ -1,5 +1,6 @@
 package com.example.game;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
@@ -16,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 
 
@@ -135,6 +137,11 @@ public class SeniorCont implements Initializable{
                 System.out.println("album stage (stage 2) success! ");
                 finished=true;
                 albumSprite.hideWarning();
+                try {
+                    Ending ending = new Ending((Stage) scene.getScene().getWindow());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         

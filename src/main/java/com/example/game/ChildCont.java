@@ -140,23 +140,7 @@ public class ChildCont {
             showStageClearedPopup();
             chicken.pauseMovement();
             try{
-                // levelOpener.switchToAdultLevel();
-                levelOpener = new LevelOpener() {
-                    @Override
-                    public void switchToAdultLevel() throws IOException {
-                        
-                        // Stage stage = (Stage) scene.getScene().getWindow();
-                        // stage.close();
-                        // levelOpener.switchToAdultLevel();
-                        AdultStage adultStage = new AdultStage((Stage) scene.getScene().getWindow(), this);
-                    }
-            
-                    @Override
-                    public void switchToSeniorLevel() throws IOException {
-                        levelOpener.switchToSeniorLevel();
-                    }
-                };
-                levelOpener.switchToAdultLevel();
+             AdultStage adultStage = new AdultStage((Stage) scene.getScene().getWindow());
             } catch (IOException e){
                 e.printStackTrace();
             }

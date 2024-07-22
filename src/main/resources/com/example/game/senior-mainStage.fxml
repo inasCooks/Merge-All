@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="level3-root" fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1535.0" onMouseClicked="#clickAnywhere" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="level3-root" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1535.0" onMouseClicked="#clickAnywhere" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="bgImage" fitHeight="805.0" fitWidth="805.0" layoutX="344.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -24,10 +25,13 @@
             <Image url="@../../../sprite/senior/album_sprite/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="chickenSprite" fitHeight="97.0" fitWidth="88.0" layoutX="434.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="chickenSprite" fitHeight="97.0" fitWidth="88.0" layoutX="434.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@../../../sprite/adult/1.png" />
          </image>
+         <rotationAxis>
+            <Point3D y="1.0" />
+         </rotationAxis>
       </ImageView>
       <Rectangle fx:id="leftB" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="805.0" layoutX="-2.0" layoutY="-1.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="345.0" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Rectangle fx:id="rightB" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="806.0" layoutX="1146.0" layoutY="-1.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="390.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

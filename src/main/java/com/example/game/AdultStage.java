@@ -23,21 +23,20 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
 
     // @FXML
     // private AnchorPane rootAnchorPane;
-    public AdultStage(Stage primaryStage, LevelOpener levelOpener) throws IOException{
+    public AdultStage(Stage primaryStage) throws IOException{
     // public AdultStage(Stage primaryStage, AdultController adultController, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller) throws IOException{
         super(new AnchorPane());
         adult1Controller = new Adult1Controller();
         adult2Controller = new Adult2Controller();
         adult3Controller = new Adult3Controller();
         this.primaryStage = primaryStage;
-        this.levelOpener = levelOpener;
         // this.adultController=adultController;
         // this.adult1Controller = adult1Controller;
         // this.adult2Controller = adult2Controller;
         // this.adult3Controller = adult3Controller;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("adult-mainStage.fxml"));
         try{
-            this.adultController= new AdultController(this, this.levelOpener ,this.adult1Controller, this.adult2Controller, this.adult3Controller);
+            this.adultController= new AdultController(this ,this.adult1Controller, this.adult2Controller, this.adult3Controller);
             loader.setController(this.adultController);
             Parent root = loader.load();
             adultStage = primaryStage;

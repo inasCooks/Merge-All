@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    private SceneManager sceneManager;
     private AdultController adultController;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
@@ -27,9 +26,8 @@ public class Main extends Application {
         primaryStage.setTitle("The Chicken Game");
         primaryStage.show();
         
-
-        sceneManager = new SceneManager(primaryStage);
-        sceneManager.switchToAdultLevel();
+        // sceneManager = new SceneManager(primaryStage);
+        // sceneManager.switchToAdultLevel();
         // sceneManager.switchToSeniorLevel();
     }
     

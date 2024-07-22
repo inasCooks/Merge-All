@@ -1,43 +1,36 @@
-package com.example.game;
+// package com.example.game;
 
-import java.io.IOException;
-import java.util.random.RandomGenerator.LeapableGenerator;
-
-import javafx.stage.Stage;
+// import java.io.IOException;
+// import javafx.stage.Stage;
 
 
-public class SceneManager implements LevelOpener{
+// public class SceneManager implements LevelOpener{
 
-    Stage primaryStage;
-    private AdultStage adultStage;
-    private SeniorStage seniorStage;
-    private ChildStage childStage;
-    private AdultController adultController;
-    private Adult1Controller adult1Controller;
-    private Adult2Controller adult2Controller;
-    private Adult3Controller adult3Controller;
-    private LevelOpener levelOpener;
+//     Stage primaryStage;
+//     private AdultStage adultStage;
+//     private SeniorStage seniorStage;
+//     private ChildStage childStage;
+//     private AdultController adultController;
+//     private Adult1Controller adult1Controller;
+//     private Adult2Controller adult2Controller;
+//     private Adult3Controller adult3Controller;
+//     private LevelOpener levelOpener;
     
 
-    public SceneManager(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
+//     public SceneManager(Stage primaryStage) {
+//         this.primaryStage = primaryStage;
+//     }
 
-    public SceneManager getSceneManager(){ return this; } // getSceneManager
+//     @Override
+//     public void switchToAdultLevel() throws IOException{
+//         adultStage = new AdultStage(primaryStage); 
 
+//     }
+//     @Override
+//     public void switchToSeniorLevel() throws IOException {
+//         this.seniorStage = new SeniorStage(primaryStage);
+//     }
 
-
-    @Override
-    public void switchToAdultLevel() throws IOException{
-        // adultStage = new AdultStage(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
-        adultStage = new AdultStage(primaryStage, this); //this == passes levelOpener to AdultStage, so that adult stage can do levelOpener.switchToSeniorLevel
-
-    }
-    @Override
-    public void switchToSeniorLevel() throws IOException {
-        this.seniorStage = new SeniorStage(primaryStage);
-    }
-
-    // Add methods for other stages (Stage1, Stage2, etc.) as needed
-}
+//     // Add methods for other stages (Stage1, Stage2, etc.) as needed
+// }
 

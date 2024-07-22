@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="albumCover" fitHeight="245.0" fitWidth="184.0" layoutX="208.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../sprite/closedAlbum.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="name" alignment="CENTER" layoutX="249.0" layoutY="157.0" prefHeight="18.0" prefWidth="99.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font name="OCR A Extended" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
