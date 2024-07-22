@@ -20,19 +20,19 @@
 
 //     public boolean getaPressed(){
 //         return aPressed.get();
-    // }
-    // public void setwPressed(boolean bool){
-    //      wPressed.set(bool);
-    // }
-    // public void setaPressed(boolean bool){
-    //     aPressed.set(bool);
-    // }
-    // public void setsPressed(boolean bool){
-    //     sPressed.set(bool);
-    // }
-    // public void setdPressed(boolean bool){
-    //     dPressed.set(bool);
-    // }
+//     }
+//     public void setwPressed(boolean bool){
+//          wPressed.set(bool);
+//     }
+//     public void setaPressed(boolean bool){
+//         aPressed.set(bool);
+//     }
+//     public void setsPressed(boolean bool){
+//         sPressed.set(bool);
+//     }
+//     public void setdPressed(boolean bool){
+//         dPressed.set(bool);
+//     }
 
 //     private int movementVariable = 2;
 //     private ImageView chickenSprite;
@@ -41,10 +41,10 @@
 //     private boolean isPaused = false;
 
 
-    // public Chicken(ImageView chickenImageView, AnchorPane sceneAnchorPane){
-    //     this.chickenSprite = chickenImageView;
-    //     this.sceneAnchorPane = sceneAnchorPane;
-    // }
+//     public Chicken(ImageView chickenImageView, AnchorPane sceneAnchorPane){
+//         this.chickenSprite = chickenImageView;
+//         this.sceneAnchorPane = sceneAnchorPane;
+//     }
 
 //     public String getPlayerName(){
 //         return playerName;

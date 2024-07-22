@@ -17,7 +17,7 @@
 //     private BooleanBinding keyPressed = wPressed.or(aPressed).or(sPressed).or(dPressed);
 
 //     private AnchorPane sceneAnchorPane;
-//     private ImageView chickenSprite;
+//     private ImageView sprite;
 //     private ImageView background;
 //     private Runnable onObjectCollected;
 
@@ -42,9 +42,9 @@
 //     }
 
     
-//     public ChickenChild(ImageView chickenSprite, AnchorPane sceneAnchorPane, ImageView background, Runnable onObjectCollected){
-//         super(chickenSprite, sceneAnchorPane);
-//         this.chickenSprite = chickenSprite;
+//     public ChickenChild(ImageView sprite, AnchorPane sceneAnchorPane, ImageView background, Runnable onObjectCollected){
+//         super(sprite, sceneAnchorPane);
+//         this.sprite = sprite;
 //         this.sceneAnchorPane = sceneAnchorPane;
 //         this.background = background;
 //         this.onObjectCollected = onObjectCollected;
@@ -98,8 +98,8 @@
 //             if (isPaused) return;
 //             int movementVariable = 3;
 
-//             double newX = chickenSprite.getLayoutX();
-//             double newY = chickenSprite.getLayoutY();
+//             double newX = sprite.getLayoutX();
+//             double newY = sprite.getLayoutY();
 
 //             if (wPressed.get()) {
 //                 newY -= movementVariable;
@@ -117,11 +117,11 @@
 //                 newX += movementVariable;
 //             }
 
-//             if (newX >= minX && newX + chickenSprite.getFitWidth() <= background.getFitWidth()) {
-//                 chickenSprite.setLayoutX(newX);
+//             if (newX >= minX && newX + sprite.getFitWidth() <= background.getFitWidth()) {
+//                 sprite.setLayoutX(newX);
 //             }
-//             if (newY >= minY && newY + chickenSprite.getFitHeight() <= background.getFitHeight() - 200) {
-//                 chickenSprite.setLayoutY(newY);
+//             if (newY >= minY && newY + sprite.getFitHeight() <= background.getFitHeight() - 200) {
+//                 sprite.setLayoutY(newY);
 //             }
 
 //             checkObjectCollection();
@@ -142,7 +142,7 @@
 //         for (ImageView object : objects) {
 //             if (object.isVisible()) {
 //                 System.out.println("visible object detected "+object);
-//                 Bounds chickenBounds = chickenSprite.getBoundsInParent();
+//                 Bounds chickenBounds = sprite.getBoundsInParent();
 //                 Bounds objectBounds = object.getBoundsInParent();
 //                 if (chickenBounds.intersects(objectBounds)) {
 //                     onObjectCollected.run();
@@ -173,13 +173,13 @@
 //         timerChild.start();
 //     }
 //     public double[] getSpritePosition() {
-//         return new double[]{chickenSprite.getLayoutX(), chickenSprite.getLayoutY()};
+//         return new double[]{sprite.getLayoutX(), sprite.getLayoutY()};
 //     }
 
 //     public void setSpritePosition(double[] position) {
 //         if (position != null && position.length == 2) {
-//             chickenSprite.setLayoutX(position[0]);
-//             chickenSprite.setLayoutY(position[1]);
+//             sprite.setLayoutX(position[0]);
+//             sprite.setLayoutY(position[1]);
 //         }
 //     }
 // }
@@ -215,9 +215,9 @@ public class Chicken {
     private boolean isPaused = false;
 
     //this is for child stage only
-    public Chicken(ImageView chickenSprite, AnchorPane scene, ImageView background, Runnable onObjectCollected){
+    public Chicken(ImageView sprite, AnchorPane scene, ImageView background, Runnable onObjectCollected){
         this.scene = scene;
-        this.sprite = chickenSprite;
+        this.sprite = sprite;
         this.background = background;
         this.onObjectCollected = onObjectCollected;
 
@@ -227,14 +227,14 @@ public class Chicken {
     }
 
     //adult & senior stage
-    public Chicken(ImageView chickenSprite, AnchorPane scene){
-        this.sprite = chickenSprite;
+    public Chicken(ImageView sprite, AnchorPane scene, ImageView background){
+        this.sprite = sprite;
         this.scene = scene;
-        this.background = null;
-        this. onObjectCollected = null;
+        this.background = background;
+        this.onObjectCollected = null;
 
-        minX=0;
-        minY=0;
+        minX = scene.getLayoutX();
+        minY = scene.getLayoutY()+scene.getHeight();
     }
 
     public void setPlayerName(String playerName) {
@@ -246,6 +246,10 @@ public class Chicken {
     //use in Stage 3
     public String getPlayerName(){
         return playerName;
+    }
+
+    public boolean getaPressed(){
+        return aPressed.get();
     }
     public void setwPressed(boolean bool){
         wPressed.set(bool);
@@ -317,38 +321,56 @@ public class Chicken {
     AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long timestamp) {
-            System.out.println("timer chicken child has started");
+            System.out.println("keys pressed started");
             if (isPaused) return;
             int movementVariable = 3;
 
-            double newX = sprite.getLayoutX();
-            double newY = sprite.getLayoutY();
-
-            if (wPressed.get()) {
-                newY -= movementVariable;
+            if (onObjectCollected!=null){
+                double newX = sprite.getLayoutX();
+                double newY = sprite.getLayoutY();
+    
+                if (wPressed.get()) {
+                    newY -= movementVariable;
+                }
+    
+                if (sPressed.get()) {
+                    newY += movementVariable;
+                }
+    
+                if (aPressed.get()) {
+                    newX -= movementVariable;
+                }
+    
+                if (dPressed.get()) {
+                    newX += movementVariable;
+                }
+    
+                if (newX >= minX && newX + sprite.getFitWidth() <= background.getFitWidth()) {
+                    sprite.setLayoutX(newX);
+                }
+                if (newY >= minY && newY + sprite.getFitHeight() <= background.getFitHeight() - 200) {
+                    sprite.setLayoutY(newY);
+                }
+                    checkObjectCollection();
+            } else {
+                if(wPressed.get()) {
+                    sprite.setLayoutY(sprite.getLayoutY() - movementVariable);
+                }
+    
+                if(sPressed.get()){
+                    sprite.setLayoutY(sprite.getLayoutY() + movementVariable);
+                }
+    
+                if(aPressed.get()){
+                    sprite.setLayoutX(sprite.getLayoutX() - movementVariable);
+                }
+    
+                if(dPressed.get()){
+                    sprite.setLayoutX(sprite.getLayoutX() + movementVariable);
+                }
             }
 
-            if (sPressed.get()) {
-                newY += movementVariable;
-            }
-
-            if (aPressed.get()) {
-                newX -= movementVariable;
-            }
-
-            if (dPressed.get()) {
-                newX += movementVariable;
-            }
-
-            if (newX >= minX && newX + sprite.getFitWidth() <= background.getFitWidth()) {
-                sprite.setLayoutX(newX);
-            }
-            if (newY >= minY && newY + sprite.getFitHeight() <= background.getFitHeight() - 200) {
-                sprite.setLayoutY(newY);
-            }
-
-            if (onObjectCollected!=null)
-                checkObjectCollection();
+            
         }
     };
 

@@ -28,13 +28,13 @@ public class SeniorCont implements Initializable{
     private Chicken chicken;
 
     @FXML
-    private AnchorPane rootAnchorPane;
+    private AnchorPane scene;
 
     @FXML
     private Rectangle topB,leftB,rightB, bottomB;
 
     @FXML
-    private ImageView bgImageView, chickenSprite, npc, album;
+    private ImageView bgImage, chickenSprite, npc, album;
     private Sprite albumSprite,npcSprite;
 
     @FXML
@@ -71,7 +71,7 @@ public class SeniorCont implements Initializable{
         dialogLabel.setText(dialogList[0]);
 
         //setup sprites
-        chicken = new Chicken(chickenSprite, rootAnchorPane);
+        chicken = new Chicken(chickenSprite, scene, bgImage);
         npcSprite = new Sprite("/sprite/senior/npc_grandpa/", npc);
         albumSprite = new Sprite("/sprite/senior/album_sprite/", album);
         npcSprite.showWarning();

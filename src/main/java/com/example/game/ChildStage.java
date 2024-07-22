@@ -12,6 +12,7 @@ public class ChildStage {
     private Stage childStage, primaryStage;
     private Scene childScene;
     private ChildCont childCont;
+    private LevelOpener levelOpener;
 
     //load new game
     public ChildStage(Stage primaryStage) {
@@ -24,17 +25,18 @@ public class ChildStage {
     }
 
     private void initChildStage(Stage primaryStage, GameState gameState) {
-        // this.primaryStage = primaryStage;
-        // childCont = new ChildCont();
+
+        childCont = new ChildCont();
         FXMLLoader loaderChild = new FXMLLoader(getClass().getResource("child-stage.fxml"));
         try {
+            loaderChild.setController(childCont);
             Parent root = loaderChild.load();
             childScene = new Scene(root);
             childStage = primaryStage;
             childStage.setTitle("Child Stage");
             childStage.setScene(childScene);
 
-            childCont = loaderChild.getController();
+            // childCont = loaderChild.getController();
             //if there is saved game, load game state
             if (gameState != null) {
                 childCont.initGameState(gameState);

@@ -74,7 +74,7 @@ public class AdultController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dialogLabel.setVisible(true);
-        chicken = new Chicken(chickenPlayer,scene);
+        chicken = new Chicken(chickenPlayer,scene, bgImage);
         spawnPosX = chickenPlayer.getLayoutX();
         spawnPosY = chickenPlayer.getLayoutY();
         chicken.makeMovable();
@@ -159,12 +159,35 @@ public class AdultController implements Initializable {
             chickenPlayer.setVisible(false);
             chicken.pauseMovement();
             try{
-                    // sceneManager.getSceneManager().switchToSeniorLevel();
-                levelOpener.switchToSeniorLevel();
-            }catch(IOException e){
+                levelOpener.switchToAdultLevel();
+                // SeniorStage seniorStage = new SeniorStage((Stage) scene.getScene().getWindow());
+            } catch (IOException e){
                 e.printStackTrace();
             }
             
+            // try{
+            //         // sceneManager.getSceneManager().switchToSeniorLevel();
+            //     levelOpener.switchToSeniorLevel();
+            // }catch(IOException e){
+            //     e.printStackTrace();
+            // }
+            // try{
+            //     // levelOpener.switchToAdultLevel();
+            //     levelOpener = new LevelOpener() {
+            //         @Override
+            //         public void switchToAdultLevel() throws IOException {
+            //             levelOpener.switchToAdultLevel();
+            //         }
+            
+            //         @Override
+            //         public void switchToSeniorLevel() throws IOException {
+            //             levelOpener.switchToSeniorLevel();
+            //         }
+            //     };
+            //     levelOpener.switchToSeniorLevel();
+            // } catch (IOException e){
+            //     e.printStackTrace();
+            // }
             
         }else{
             changeSpritePos(chickenPlayer, spawnPosX, spawnPosY); //respawn

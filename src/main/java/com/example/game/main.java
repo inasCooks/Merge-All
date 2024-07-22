@@ -27,14 +27,10 @@ public class Main extends Application {
         primaryStage.setTitle("The Chicken Game");
         primaryStage.show();
         
-        // adult1Controller = new Adult1Controller();
-        // adult2Controller = new Adult2Controller();
-        // adult3Controller = new Adult3Controller();
-        // sceneManager = new SceneManager(primaryStage);
-        // sceneManager = new SceneManager(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
-        // sceneManager.switchToAdultLevel();
-        // sceneManager.switchToSeniorLevel();
 
+        sceneManager = new SceneManager(primaryStage);
+        sceneManager.switchToAdultLevel();
+        // sceneManager.switchToSeniorLevel();
     }
     
     public static void main(String[] args) {

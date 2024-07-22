@@ -9,7 +9,7 @@
 
 <AnchorPane id="level3-root" fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1535.0" onMouseClicked="#clickAnywhere" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="bgImageView" fitHeight="805.0" fitWidth="805.0" layoutX="344.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bgImage" fitHeight="805.0" fitWidth="805.0" layoutX="344.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../../../sprite/senior/seniorStage_bg.png" />
             </image>

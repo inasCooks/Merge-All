@@ -20,6 +20,7 @@ import java.util.Optional;
 
 public class ChildCont {
 
+    private LevelOpener levelOpener;
     //scene setup
     @FXML
     private AnchorPane scene,pauseOverlay;
@@ -46,6 +47,11 @@ public class ChildCont {
     private boolean isNewGame = true;
     private boolean isGameStateLoaded = false;
 
+    // public ChildCont(LevelOpener levelOpener) {
+        // this.levelOpener = levelOpener;
+        
+    // }
+
     //general game setup
     @FXML
     public void initialize() {
@@ -64,6 +70,7 @@ public class ChildCont {
 
         updateProgress();
         Platform.runLater(scene::requestFocus);
+
         // scene.requestFocus();
     }
 
@@ -131,6 +138,29 @@ public class ChildCont {
         //indication for stage cleared
         if (currentObjectIndex == objects.length ) {
             showStageClearedPopup();
+            chicken.pauseMovement();
+            try{
+                // levelOpener.switchToAdultLevel();
+                levelOpener = new LevelOpener() {
+                    @Override
+                    public void switchToAdultLevel() throws IOException {
+                        
+                        // Stage stage = (Stage) scene.getScene().getWindow();
+                        // stage.close();
+                        // levelOpener.switchToAdultLevel();
+                        AdultStage adultStage = new AdultStage((Stage) scene.getScene().getWindow(), this);
+                    }
+            
+                    @Override
+                    public void switchToSeniorLevel() throws IOException {
+                        levelOpener.switchToSeniorLevel();
+                    }
+                };
+                levelOpener.switchToAdultLevel();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            
         }
     }
 

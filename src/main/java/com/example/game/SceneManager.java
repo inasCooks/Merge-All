@@ -11,6 +11,7 @@ public class SceneManager implements LevelOpener{
     Stage primaryStage;
     private AdultStage adultStage;
     private SeniorStage seniorStage;
+    private ChildStage childStage;
     private AdultController adultController;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
@@ -24,13 +25,12 @@ public class SceneManager implements LevelOpener{
 
     public SceneManager getSceneManager(){ return this; } // getSceneManager
 
-    public void switchToChildStage() throws IOException{
-        
-    }
 
+
+    @Override
     public void switchToAdultLevel() throws IOException{
         // adultStage = new AdultStage(primaryStage, adultController, adult1Controller, adult2Controller, adult3Controller);
-        adultStage = new AdultStage(primaryStage, this);
+        adultStage = new AdultStage(primaryStage, this); //this == passes levelOpener to AdultStage, so that adult stage can do levelOpener.switchToSeniorLevel
 
     }
     @Override
