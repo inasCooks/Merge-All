@@ -52,7 +52,7 @@ public class KettleStageCont implements Initializable {
     boolean stopCountDown;
     public static boolean gameRunning=false;
     public static boolean winChallenge=false;
-    public boolean replay = false;
+    public boolean replay = true;
     
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -112,10 +112,11 @@ public class KettleStageCont implements Initializable {
     }
     
     @FXML
-    private void clickStart(){
-        if (replayBtn.visibleProperty().get())
+    private void clickStart(){ //click start/click replay, same method
+        System.out.println("kettle challenge started !");   
+        if (replayBtn.isVisible())
             replayBtn.setVisible(false);
-        else if (playBtn.visibleProperty().get())
+        else if (playBtn.isVisible())
             playBtn.setVisible(false);
 
         wrapper.setVisible(false);
@@ -124,7 +125,7 @@ public class KettleStageCont implements Initializable {
     }
 
     @FXML
-    private void hoverButton(){
+    private void hoverButton(){ //this is just a deco effect
         // if (replayBtn.visibleProperty().get())
             replayButton.hoverButton();
         // if (playBtn.visibleProperty().get())
@@ -132,10 +133,10 @@ public class KettleStageCont implements Initializable {
     }
 
     @FXML
-    private void exitButton(){
-        if (replayBtn.visibleProperty().get())
+    private void exitButton(){ //this is also a deco effect
+        if (replayBtn.isVisible())
             replayButton.exitButton();
-        if (playBtn.visibleProperty().get())
+        if (playBtn.isVisible())
             playButton.exitButton();
     }
 
@@ -146,16 +147,15 @@ public class KettleStageCont implements Initializable {
             sleepyGrandpa.wakeUp();
     }
 
-    //progressBar's Logic
+    //progressBar's Logic is controlled in this class because its easier to manipulate the FXML elements directly here.
     private void increaseProgress(){
         if (checkMarkerRange()){
-            progress += 0.0025;
+            progress += 0.005;
             progressBar.setProgress(progress);
             if (progress<1)
                 progressLabel.setText(String.format("%.0f%%", progress * 100));
             else{
-                
-                replay=false;
+                replay=false; //progreesss = 1 means progress is 100%
                 winChallenge=true;
                 endChallenge();
                 playEnding();
@@ -174,16 +174,26 @@ public class KettleStageCont implements Initializable {
             progressBar.setProgress(progress);
             progressLabel.setText(String.format("%.0f%%", progress * 100));
         } else if (progress <= 0){
-            // winChallenge = false;
-            // startCountdown();
-            // endChallenge();
+
         }
     }
 
     //Marker's Logic
+    public void handleKeyPressed(KeyEvent event) { //press space bar to increase marker
+        if (gameRunning)
+            switch (event.getCode()) {
+                case SPACE:
+                if(marker.getLayoutX()>=minX && marker.getLayoutX()<=maxX)
+                    moveMarker(random.nextInt(10-5+1)+5); // Move marker 5-10 units to the right
+                break;
+                default:
+                break;
+            }
+    } 
+
     private void autoDecreaseMarker(){
         if (marker.getLayoutX()>minX)
-            moveMarker(-(random.nextInt(4-2+1)+2)); //setting marker to go fall down in random speed.
+            moveMarker(-(random.nextInt(4-2+1)+2)); //setting marker to go fall back to bottom in random speed.
         if (marker.getLayoutX()<=minX){
             winChallenge=false;
             replay=true;
@@ -192,6 +202,7 @@ public class KettleStageCont implements Initializable {
         if(SleepyGrandpa.grandpaIsAngry)
                 moveMarker(-4); //the marker is gonna fall back down if player makes grandpa angry.
     }
+    
 
     private void moveMarker(double deltaX) {
         if (marker.getLayoutX()<=minX){
@@ -206,16 +217,6 @@ public class KettleStageCont implements Initializable {
         return (marker.getBoundsInParent().intersects(greenArea.getBoundsInParent()))? true: false;
     }
 
-    public void handleKeyPressed(KeyEvent event) {
-        if (gameRunning)
-            switch (event.getCode()) {
-                case SPACE:
-                if(marker.getLayoutX()>=minX && marker.getLayoutX()<=maxX)
-                    moveMarker(random.nextInt(10-5+1)+5); // Move marker 5-10 units to the right
-                break;
-                default:
-                break;
-            }
-    }
+    
     
 }

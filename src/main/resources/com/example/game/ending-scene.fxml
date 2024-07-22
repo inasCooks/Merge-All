@@ -14,7 +14,7 @@
             <Image url="@../../../sprite/closedAlbum.png" />
          </image>
       </ImageView>
-      <Label fx:id="name" alignment="CENTER" layoutX="249.0" layoutY="157.0" prefHeight="18.0" prefWidth="99.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="name" alignment="CENTER" layoutX="249.0" layoutY="157.0" prefHeight="18.0" prefWidth="99.0" textAlignment="CENTER">
          <font>
             <Font name="OCR A Extended" size="12.0" />
          </font>

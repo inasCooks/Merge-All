@@ -121,6 +121,7 @@ public class SeniorCont implements Initializable{
     public void checkWinStatus(){
         if (!part2){
             System.out.println("checking win status for kettle stage");
+            // kettleStageCont.endChallenge();
             if (kettleStageCont.hasWonKettleStage()) {
                 System.out.println("kettle stage (stage 1) success! ");
 

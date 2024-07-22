@@ -23,6 +23,8 @@ public class Ending extends AnchorPane {
             Parent root = loader.load();
             endingScene = new Scene(root);
             endingStage = primaryStage;
+            endingStage.setMaximized(false);
+            endingStage.setTitle("The End..?");
             endingStage.setScene(endingScene);
         } catch(IOException e){
             System.out.println("Error in Ending()");

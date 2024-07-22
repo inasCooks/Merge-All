@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 public class AdultStage extends AnchorPane implements MiniStageOpener {
 
     private MiniStageOpener miniStageOpener;
-    private LevelOpener levelOpener;
     private AdultController adultController;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
@@ -21,15 +20,14 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
     private Stage primaryStage, adultStage,sortDocStage, officeTableStage, dustStage;
     private Scene adultScene, sortDocScene, dustScene, officeTableScene;
 
-    // @FXML
-    // private AnchorPane rootAnchorPane;
     public AdultStage(Stage primaryStage) throws IOException{
-    // public AdultStage(Stage primaryStage, AdultController adultController, Adult1Controller adult1Controller, Adult2Controller adult2Controller, Adult3Controller adult3Controller) throws IOException{
+
         super(new AnchorPane());
         adult1Controller = new Adult1Controller();
         adult2Controller = new Adult2Controller();
         adult3Controller = new Adult3Controller();
         this.primaryStage = primaryStage;
+        primaryStage.setMaximized(true);
         // this.adultController=adultController;
         // this.adult1Controller = adult1Controller;
         // this.adult2Controller = adult2Controller;
@@ -42,6 +40,7 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
             adultStage = primaryStage;
             adultScene = new Scene(root);
             adultStage.setScene(adultScene);
+            adultStage.setTitle("Office Room");
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -153,4 +152,5 @@ public class AdultStage extends AnchorPane implements MiniStageOpener {
     public void openAlbumStage() {
         miniStageOpener.openAlbumStage();
     }
+
 }

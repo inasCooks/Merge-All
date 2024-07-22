@@ -13,6 +13,12 @@ public class GameState implements Serializable {
         this.chickenPosition = chickenPosition;
     }
 
+    public GameState(String playerName, double[] chickenPosition) {
+        this.playerName = playerName;
+        this.currentObjectIndex = 0;
+        this.chickenPosition = chickenPosition;
+    }
+
     public String getPlayerName() {
         return playerName;
     }

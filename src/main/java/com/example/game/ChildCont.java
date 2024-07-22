@@ -20,7 +20,6 @@ import java.util.Optional;
 
 public class ChildCont {
 
-    private LevelOpener levelOpener;
     //scene setup
     @FXML
     private AnchorPane scene,pauseOverlay;
@@ -42,15 +41,10 @@ public class ChildCont {
     private Chicken chicken;
     private ImageView[] objects;
     private int currentObjectIndex = 0;
-    private String playerName;
+    public static String playerName;
     private boolean isPaused = false;
     private boolean isNewGame = true;
     private boolean isGameStateLoaded = false;
-
-    // public ChildCont(LevelOpener levelOpener) {
-        // this.levelOpener = levelOpener;
-        
-    // }
 
     //general game setup
     @FXML
@@ -74,11 +68,6 @@ public class ChildCont {
         // scene.requestFocus();
     }
 
-    @FXML
-    void clickNPC(){
-        System.out.println("meow");
-    }
-
     //setup for new game
     public void startNewGame(){
         System.out.println("Starting New Game.");
@@ -86,7 +75,6 @@ public class ChildCont {
         showStart();
         chicken.setPlayerName(playerName);
         chicken.makeMovable();
-        System.out.println("chicken makemovable called from startNewGame");
     }
 
     //setup for saved game
@@ -232,7 +220,7 @@ public class ChildCont {
     @FXML
     private void returnToMainMenu() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
             Parent mainMenuRoot = fxmlLoader.load();
             Scene mainMenuScene = new Scene(mainMenuRoot);
             Stage stage = (Stage) scene.getScene().getWindow();

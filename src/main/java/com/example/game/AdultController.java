@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -15,7 +17,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 // import java.util.logging.Level;
@@ -24,12 +28,11 @@ public class AdultController implements Initializable {
 
     private Chicken chicken;
     private MiniStageOpener miniStageOpener;
-    private LevelOpener levelOpener;
     private Stage dustStage;
     private Adult1Controller adult1Controller;
     private Adult2Controller adult2Controller;
     private Adult3Controller adult3Controller;
-    
+
     @FXML
     private Button button;
 
@@ -78,7 +81,7 @@ public class AdultController implements Initializable {
         spawnPosY = chickenPlayer.getLayoutY();
         chicken.makeMovable();
         collisionTimer.start();
-
+        System.out.println(ChildCont.playerName + " has entered adult stage");
     }
 
     public Chicken getChicken(Chicken chicken){
@@ -90,7 +93,6 @@ public class AdultController implements Initializable {
         this.adult1Controller = adult1Controller;
         this.adult2Controller = adult2Controller;
         this.adult3Controller = adult3Controller;
-        System.out.println("controllers 1,2,3 ..." + adult1Controller + " " + adult2Controller + " " + adult3Controller);
     }
 
     @FXML
@@ -223,7 +225,7 @@ public class AdultController implements Initializable {
 
     }
 
-
+    
     
 }
 

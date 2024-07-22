@@ -39,8 +39,8 @@ public class SeniorStage extends AnchorPane implements MiniStageOpener {
         Parent root = loader.load();
         seniorStage = primaryStage;
         seniorScene = new Scene(root);
-        seniorScene.setFill(new Color(0, 0, 0, 0.75)); 
         seniorStage.setScene(seniorScene);
+        seniorStage.setTitle("Somebody's Living Room");
 
         //To set if main window is closed, then the mini popup windows will close too.
         primaryStage.setOnCloseRequest(event -> {
@@ -87,10 +87,13 @@ public class SeniorStage extends AnchorPane implements MiniStageOpener {
             }
 
             kettleStage.show();
-            Platform.runLater(() -> {  // Schedule focus request after scene is shown
-            kettleStageCont.myRootPane.setFocusTraversable(true);
-            kettleStageCont.myRootPane.requestFocus();
-            });
+            if (kettleStage.isShowing()){
+                Platform.runLater(() -> {  // Schedule focus request after scene is shown
+                    kettleStageCont.myRootPane.setFocusTraversable(true);
+                    kettleStageCont.myRootPane.requestFocus();
+                    });
+            }
+            
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -104,9 +107,6 @@ public class SeniorStage extends AnchorPane implements MiniStageOpener {
             loaderAlbumStage.setController(albumStageCont);
             BorderPane albumRoot = loaderAlbumStage.load();
             Scene albumScene = new Scene(albumRoot);
-            // kettleScene.setOnKeyPressed(controller::handleKeyPressed);
-            // This is needed to handle spacebar key pressing event
-            
             
             if(albumStage==null){
                 albumStage = new Stage();
@@ -117,7 +117,6 @@ public class SeniorStage extends AnchorPane implements MiniStageOpener {
             if (albumStage != null) {
                 albumStage.setOnHiding(e -> {
                     System.out.println("hiding detected");
-                    //call a void from Level3Controller
                     this.seniorCont.checkWinStatus();
                 });
             }

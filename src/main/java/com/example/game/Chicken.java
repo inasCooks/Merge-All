@@ -325,7 +325,7 @@ public class Chicken {
             if (isPaused) return;
             int movementVariable = 3;
 
-            if (onObjectCollected!=null){
+            if (onObjectCollected!=null){ //this is spepcial for child stage cz chld stage requires collecting object, and has a diff logic
                 double newX = sprite.getLayoutX();
                 double newY = sprite.getLayoutY();
     
@@ -353,6 +353,7 @@ public class Chicken {
                 }
                     checkObjectCollection();
             } else {
+
                 if(wPressed.get()) {
                     sprite.setLayoutY(sprite.getLayoutY() - movementVariable);
                 }

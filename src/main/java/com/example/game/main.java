@@ -20,15 +20,13 @@ public class Main extends Application {
         GameStateManager.deleteGameState();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
         mainMenuCont = new MainMenuCont();
-        fxmlLoader.setController(mainMenuCont);
+        // fxmlLoader.setController(mainMenuCont);
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
         primaryStage.setTitle("The Chicken Game");
-        primaryStage.show();
         
-        // sceneManager = new SceneManager(primaryStage);
-        // sceneManager.switchToAdultLevel();
-        // sceneManager.switchToSeniorLevel();
+        primaryStage.show();
+    
     }
     
     public static void main(String[] args) {

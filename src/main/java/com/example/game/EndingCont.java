@@ -17,6 +17,6 @@ public class EndingCont  implements Initializable{
     private Label name;
 
     public void initialize(URL location, ResourceBundle resources){
-
+        name.setText(ChildCont.playerName);
     }
 }
